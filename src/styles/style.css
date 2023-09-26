@@ -1,0 +1,179 @@
+.custom-navbar {
+  background-color: #f1f3ff;
+  height: ;
+}
+.font {
+  font-family: Arial, sans-serif;
+}
+
+.happy-girl {
+  width: 400px;
+  height: 380px;
+}
+/* button pada testimony */
+.custom-button {
+}
+
+/* accordion header deatil mobil */
+
+/* ukuran layar kecil */
+@media screen and (max-width: 500px) {
+  .custom-margin-cari-mobil {
+    padding-top: 30px !important;
+  }
+  .Faq {
+    color: #000;
+    text-align: center;
+    font-family: Arial;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px; /* 150% */
+  }
+  .Faq p {
+    color: #000;
+    text-align: center;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 142.857% */
+  }
+  .jalan {
+    color: #000;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 142.857% */
+  }
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .car-mercedes {
+    width: 344.216px;
+    height: 199px;
+  }
+  .Why-us {
+    color: #000;
+    font-family: Arial;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    text-align: center;
+  }
+  .car-rental {
+    color: #000;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+  }
+  .judul {
+    color: #000;
+    font-family: Arial;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+  }
+  .desc {
+    color: #000;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+  }
+  .btn-mobile {
+    padding: 8px 12px;
+
+    border-radius: 10px;
+    color: #fff;
+    border: none !important;
+    margin-bottom: 24px;
+  }
+
+  .happy-girl {
+    width: 252px;
+    height: 228px;
+    flex-shrink: 0;
+  }
+}
+
+/* Banner */
+.bg-banner {
+  border-radius: 13px;
+  background: var(--primary-dark-blue-04, #0d28a6);
+}
+/* Akhir Banner */
+/* ukuran layar kecil */
+
+/* carousel */
+.carousel-container {
+  /* Tambahkan gaya CSS yang Anda butuhkan */
+  margin: 20px; /* Contoh: memberikan jarak dari tepi */
+}
+
+/* carousel */
+
+/* animasi */
+/* .hover-3d:hover {
+  transform: rotateY(15deg);
+} */
+.yellow:hover {
+  background-color: #f9cc00; /* Ganti dengan warna latar belakang yang Anda inginkan */
+  transform: scale(1.05);
+  color: white; /* Efek scaling ketika dihover */
+}
+
+.red:hover {
+  background-color: #fa2c5a; /* Ganti dengan warna latar belakang yang Anda inginkan */
+  transform: scale(1.05);
+  color: white; /* Efek scaling ketika dihover */
+}
+
+.blue:hover {
+  background-color: #0d28a6; /* Ganti dengan warna latar belakang yang Anda inginkan */
+  transform: scale(1.05);
+  color: white;
+}
+
+.green:hover {
+  background-color: #0d28a6; /* Ganti dengan warna latar belakang yang Anda inginkan */
+  transform: scale(1.05);
+  color: white;
+  background-color: #5cb85f;
+}
+
+.cari-mobil-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.custom-margin-cari-mobil {
+  margin-top: -55px !important;
+}
+
+.heigh-custom {
+  height: 200px !important;
+  z-index: -100;
+}
+
+.custom-margin-hero {
+  margin-top: -100px !important;
+}
+
+.custom-margin-hasil-cari {
+  margin-top: -60px !important;
+}
+
+.custom-margin-detail-mobil {
+  margin-top: -60px !important;
+}

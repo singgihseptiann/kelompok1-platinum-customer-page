@@ -1,0 +1,128 @@
+/* NavbarStyles.css */
+.custom-navbar {
+  background-color: #f1f3ff;
+  font-family: Arial, sans-serif;
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+/* styles/style.css */
+.navbar-container {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+.intro {
+  height: 400px;
+
+  display: flex;
+  justify-content: start;
+  align-items: end;
+}
+
+.btn-custom {
+  background-color: #5cb85f;
+  border: none;
+}
+.btn-custom:hover {
+  background-color: #5cb85f;
+  border: none;
+}
+
+/* .container-car {
+  width: 100%;
+  display: flex;
+  align-items: center;
+} */
+.bg-car {
+  border-radius: 60px 0px 0px 0px;
+  background: var(--primary-dark-blue-04, #0d28a6);
+  width: 04px;
+  height: 407px;
+  margin-left: px;
+}
+
+.bg-car .mercedes-card {
+  margin-left: 100px;
+  width: 704px;
+  height: 407px;
+  flex-shrink: 0;
+}
+
+container {
+  border: 1px solid;
+}
+
+.list-group-item {
+  border: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.check ul {
+  padding-left: 0;
+}
+
+.check li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #000;
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.check img {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #cfd4ed;
+  padding: 5px;
+}
+
+.deskripsi h1 {
+  width: 468px;
+  color: #000;
+  font-family: Arial;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  margin-top: 50px;
+}
+
+.deskripsi h2 {
+  width: 468px;
+  color: #000;
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+/* .girl {
+  margin-top: 50px;
+}
+
+.happy-girl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-blue {
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: var(--primary-dark-blue-04, #0d28a6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
