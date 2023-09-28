@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 
@@ -47,39 +47,18 @@ function NavigationBar() {
                   FAQ
                 </Nav.Link>
               </Nav>
+              <Button variant="success">
+                <Link
+                  to="/cari-mobil"
+                  className="text-white  text-decoration-none"
+                >
+                  Register
+                </Link>
+              </Button>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-      {/* <Container fluid className="mb-5">
-        <Row className="justify-content-lg-end  mt-4">
-          <Col className="col-lg-5  col-10 ">
-            <div className="mt-lg-5">
-              <h1 className="fw-bold fs-2  judul">
-                Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)
-              </h1>
-              <p className="desc fw-bold">
-                Selamat datang di Binar Car Rental. Kami menyediakan mobil
-                kualitas terbaik dengan harga terjangkau. Selalu siap melayani
-                kebutuhanmu untuk sewa mobil selama 24 jam.
-              </p>
-              <Link to="/cari-mobil">
-                <button
-                  type="button"
-                  className="btn text-white btn-mobile"
-                  style={{ backgroundColor: "#5CB85F" }}
-                >
-                  Mulai Sewa Mobil
-                </button>
-              </Link>
-            </div>
-          </Col>
-
-          <Col className="col-lg-6   gx-0 ">
-            <Image src={Mercedes} className="float-end car-mercedes " />
-          </Col>
-        </Row>
-      </Container> */}
     </div>
   );
 }
