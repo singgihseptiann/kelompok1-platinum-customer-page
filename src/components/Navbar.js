@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Nav, Navbar, Button } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 
@@ -47,14 +47,17 @@ function NavigationBar() {
                   FAQ
                 </Nav.Link>
               </Nav>
-              <Button variant="success">
-                <Link
-                  to="/cari-mobil"
-                  className="text-white  text-decoration-none"
+              <Link to="/cari-mobil">
+                {" "}
+                {/* Use Link to navigate */}
+                <button
+                  type="button"
+                  className="btn text-white btn-mobile"
+                  style={{ backgroundColor: "#5CB85F" }}
                 >
                   Register
-                </Link>
-              </Button>
+                </button>
+              </Link>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

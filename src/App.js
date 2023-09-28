@@ -1,39 +1,3 @@
-// import React from "react";
-// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import NavigationBar from "./components/Navbar";
-// import MainOutlet from "./components/Outlet/Outlet"; // Menggunakan komponen MainOutlet
-// import Footer from "./components/Footer";
-// import CariMobil from "./components/Mobil/CariMobil";
-// import HasilPencarian from "./components/Mobil/HasilPencarian";
-// import DetailMobil from "./components/Mobil/DetailMobil";
-// import "./styles/style.css";
-
-// import HeroSection from "./components/Content/HeroSection";
-// function App() {
-//   return (
-//     <Router>
-//       <div>
-//         <div className="custom-navbar font">
-//           <NavigationBar />
-//           <HeroSection />
-//         </div>
-//         <Routes>
-//           <Route path="" element={<MainOutlet />} />
-//           {/* <Route path="/services" element={<MainOutlet />} />
-//           <Route path="/why-us" element={<MainOutlet />} />
-//           <Route path="/testimony" element={<MainOutlet />} />
-//           <Route path="/faq" element={<MainOutlet />} /> */}
-//           <Route path="/cari-mobil" element={<CariMobil />} />
-//           <Route path="/hasil-cari" element={<HasilPencarian />} />
-//           <Route path="/detail-mobil" element={<DetailMobil />} />
-//         </Routes>
-//         <Footer />
-//       </div>
-//     </Router>
-//   );
-// }
-
-// export default App;
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainOutlet from "./components/Outlet/Outlet"; // Menggunakan komponen MainOutlet
