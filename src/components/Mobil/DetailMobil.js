@@ -7,9 +7,15 @@ import {
   Card,
   Accordion,
   Spinner,
+  Button,
+  Alert,
 } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import api from "../../api";
+import { AiOutlineCalendar } from "react-icons/ai";
+import "./style.css";
+import { Calendar } from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const DetailMobil = () => {
   const { id } = useParams();
@@ -21,7 +27,7 @@ const DetailMobil = () => {
       try {
         const carResponse = await api.getCarById(id);
         setCarData(carResponse.data);
-        setIsLoading(false); // Set isLoading menjadi false setelah data berhasil diambil
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching car details:", error);
       }
@@ -31,6 +37,54 @@ const DetailMobil = () => {
   }, [id]);
   const rowStyle = {
     margin: "0", // Mengatur margin menjadi 0
+  };
+
+  //untuk calendar
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [isCalendarVisible, setCalendarVisibility] = useState(false);
+  const [selectedDateRange, setSelectedDateRange] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [isButtonDisabled, setButtonDisabled] = useState(true);
+  const toggleCalendar = () => {
+    setCalendarVisibility(!isCalendarVisible);
+  };
+
+  const formatDateToIndonesian = (date) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString("id-ID", options);
+  };
+  const handleDateChange = (dates) => {
+    if (dates[0] && dates[1]) {
+      setStartDate(dates[0]);
+      setEndDate(dates[1]);
+
+      const formattedStartDate = formatDateToIndonesian(dates[0]);
+      const formattedEndDate = formatDateToIndonesian(dates[1]);
+
+      setSelectedDateRange(`${formattedStartDate} - ${formattedEndDate}`);
+
+      const daysDiff = (dates[1] - dates[0]) / (1000 * 3600 * 24);
+
+      if (daysDiff > 7) {
+        setShowAlert(true);
+        setButtonDisabled(true);
+      } else {
+        setShowAlert(false);
+        setButtonDisabled(false);
+      }
+    }
+  };
+
+  const handlePickDate = () => {
+    if (startDate && endDate) {
+      console.log("Tanggal awal:", startDate);
+      console.log("Tanggal akhir:", endDate);
+    } else {
+      console.log("Pilih rentang tanggal terlebih dahulu.");
+    }
+
+    toggleCalendar();
   };
   return (
     <Container className="mb-5 custom-margin-detail-mobil">
@@ -141,22 +195,73 @@ const DetailMobil = () => {
               </div>
             </Col>
             <Col className="col-md-6 col-12">
-              <Card>
+              <Card style={{ zIndex: "" }}>
                 <Card.Img variant="top" src={carData ? carData.image : ""} />
                 <Card.Body>
-                  <Card.Title className="fw-bold">
+                  <Card.Title className="fw-bold mb-2">
                     {carData ? carData.name : ""}
                   </Card.Title>
+                  <p>Tentukan lama sewa mobil (max. 7 hari)</p>
+                  <div
+                    className={`input-container ${
+                      isCalendarVisible ? "with-calendar" : ""
+                    }`}
+                  >
+                    <div className="input-wrapper mb-3">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Pilih tanggal mulai dan tanggal akhir sewa"
+                        aria-label="Pilih Tanggal"
+                        aria-describedby="calendar-icon"
+                        onClick={toggleCalendar}
+                        value={selectedDateRange}
+                        disabled
+                      />
+                      <AiOutlineCalendar
+                        className="calendar-icon"
+                        onClick={toggleCalendar}
+                      />
+                    </div>
+                  </div>
+
                   <Card.Text className="fw-bold d-flex justify-content-between">
                     <span>Total</span>
                     <span>Rp. {carData ? carData.price : ""}</span>
                   </Card.Text>
                   <Card.Text className="fw-bold d-flex justify-content-between">
-                    <span>category:</span>
+                    <span>Kategori:</span>
                     <span>{carData ? carData.category : ""}</span>
                   </Card.Text>
                 </Card.Body>
               </Card>
+              {isCalendarVisible && (
+                <div
+                  className="d-flex flex-column align-items-center shadow-xl mb-3   position-relative"
+                  style={{ marginTop: "-97px" }}
+                >
+                  <div className="d-flex flex-column align-items-center  ">
+                    <Calendar
+                      className={"border rounded-3 shadow-xl pb-5  w-75"}
+                      onChange={handleDateChange}
+                      selectRange={true}
+                    />
+                  </div>
+                  <Button
+                    onClick={handlePickDate}
+                    className=" w-50 "
+                    style={{ backgroundColor: " #35B0A7", marginTop: "-50px" }}
+                    disabled={isButtonDisabled}
+                  >
+                    Pilih Tanggal
+                  </Button>
+                  {showAlert && (
+                    <Alert variant="danger" className="mt-3 w-50">
+                      Rentang tanggal melebihi 7 hari.
+                    </Alert>
+                  )}
+                </div>
+              )}
             </Col>
           </Row>
         </>

@@ -12,7 +12,7 @@ function WhyUs() {
       id="why-us-section"
     >
       <Row className="d-flex justify-content-center">
-        <Col>
+        <Col class>
           <h1 className="fw-bold Why-us">Why Us?</h1>
           <p className="fw-bold car-rental">
             Mengapa harus pilih Binar Car Rental?

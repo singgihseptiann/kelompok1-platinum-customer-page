@@ -1,0 +1,24 @@
+.input-container {
+    position: relative;
+  }
+  
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-wrapper input {
+    flex: 1;
+    padding-right: 30px; /* Sesuaikan padding-right agar input memiliki ruang untuk ikon */
+  }
+  
+  .input-wrapper .calendar-icon {
+    position: absolute;
+    right: 10px; /* Sesuaikan jarak ikon dari sisi input */
+    cursor: pointer;
+  }
+  
+  /* Saat kalender ditampilkan, sembunyikan ikon */
+  .with-calendar .calendar-icon {
+    display: none;
+  }

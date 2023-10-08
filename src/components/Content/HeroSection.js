@@ -29,7 +29,6 @@ function HeroSection() {
             </Link>
           </div>
         </Col>
-
         <Col className="col-lg-6   gx-0 ">
           <Image src={Mercedes} className="float-end car-mercedes " />
         </Col>
