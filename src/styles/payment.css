@@ -1,0 +1,300 @@
+.payment-wrapper {
+  margin-bottom: 146px;
+  transform: translateY(-113px);
+  width: 100%;
+}
+
+.payment-container {
+  max-width: 1042px;
+  margin: 0 auto;
+}
+
+.payment-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.payment-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.payment-header i {
+  font-size: 24px;
+  padding-bottom: 16px;
+}
+
+.payment-header p {
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.steps {
+  display: flex;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+}
+
+.eclips-step {
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  border: 1px solid #0d28a6;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial;
+  font-weight: 400;
+  transform: translateY(-7.5px);
+  margin-right: 8px;
+}
+
+.step p {
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.line-step {
+  width: 28px;
+  height: 1px;
+  background-color: #0d28a6;
+  margin: 0 12px;
+  transform: translateY(-7px);
+}
+
+.payment-detail {
+  padding: 24px;
+  border-radius: 8px;
+  background: var(--neutral-01, #fff);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: 24px;
+}
+
+.payment-detail > p {
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.payment-detail > div {
+  display: flex;
+}
+
+.payment-detail > div > div {
+  width: 240.45px;
+}
+
+.detail-header {
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.detail- {
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: #8a8a8a;
+}
+
+.pembayaran-wrapper {
+  display: flex;
+  gap: 32px;
+}
+
+.pilihan-bank-container {
+  padding: 24px 42px 24px 24px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  height: fit-content;
+}
+
+.pilihan-bank-container > h6 {
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.pilihan-bank-container > p {
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 44px;
+}
+
+.bank-wrapper {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 16px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.bank-container {
+  width: 61px;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid #d0d0d0;
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  transform: translateY(-7px);
+}
+
+.bank-container:hover {
+  background-color: #5cb85f;
+  color: #fff;
+}
+
+.bank-wrapper p {
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.detail-container {
+  border-radius: 8px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  width: 405px;
+  height: fit-content;
+}
+
+.detail-bold {
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.detail-container > p {
+  margin-bottom: 8px;
+}
+
+.detail-kapasitas {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.detail-kapasitas i {
+  font-size: 12px;
+  color: #8a8a8a;
+  transform: translateY(-7.4px);
+}
+
+.detail-kapasitas p {
+  font-family: Arial;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  color: #8a8a8a;
+}
+
+.total-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-container > div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.detail-thin {
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.total-container > div > i {
+  font-size: 20px;
+  transform: translateY(-8px);
+}
+
+.list-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-pembelian-container {
+  margin-bottom: 24px;
+}
+
+.detail-pembelian-container > .detail-bold {
+  margin-bottom: 8px;
+}
+
+.termasuk {
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: #5cb85f;
+}
+
+.detail-border-bottom {
+  height: 1px;
+  background-color: #d0d0d0;
+  margin-bottom: 16px;
+}
+
+.total-akhir-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.detail-container button {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 2px;
+  border: none;
+  background-color: #5cb85f;
+  font-family: Arial;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  color: #fff;
+  cursor: pointer;
+}
