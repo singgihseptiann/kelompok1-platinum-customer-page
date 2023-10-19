@@ -12,6 +12,7 @@ import "./styles/style.css";
 import NavigationBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Payment from "./components/Content/Payment";
+import LoginPage from "../src/pages/login/Login";
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
           <Route path="/why-us" element={<WhyUsPage />} />
           <Route path="/testimony" element={<Testimony />} />
           <Route path="/faq" element={<Faq />} />
-          <Route path="/payment" element={<Payment />}/>
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
 
         <Footer />
