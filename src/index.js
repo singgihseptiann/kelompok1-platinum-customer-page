@@ -7,12 +7,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "animate.css/animate.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { BrowserRouter } from "react-router-dom";
+import "./styles/style.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

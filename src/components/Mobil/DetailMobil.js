@@ -16,6 +16,7 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import "./style.css";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import moment from "moment";
 
 const DetailMobil = () => {
   const { id } = useParams();
@@ -46,25 +47,22 @@ const DetailMobil = () => {
   const [selectedDateRange, setSelectedDateRange] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [isButtonDisabled, setButtonDisabled] = useState(true);
+
   const toggleCalendar = () => {
     setCalendarVisibility(!isCalendarVisible);
   };
 
-  const formatDateToIndonesian = (date) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return date.toLocaleDateString("id-ID", options);
-  };
   const handleDateChange = (dates) => {
     if (dates[0] && dates[1]) {
       setStartDate(dates[0]);
       setEndDate(dates[1]);
 
-      const formattedStartDate = formatDateToIndonesian(dates[0]);
-      const formattedEndDate = formatDateToIndonesian(dates[1]);
+      const formattedStartDate = moment(dates[0]).format("D MMMM YYYY");
+      const formattedEndDate = moment(dates[1]).format("D MMMM YYYY");
 
       setSelectedDateRange(`${formattedStartDate} - ${formattedEndDate}`);
 
-      const daysDiff = (dates[1] - dates[0]) / (1000 * 3600 * 24);
+      const daysDiff = moment(dates[1]).diff(moment(dates[0]), "days");
 
       if (daysDiff > 7) {
         setShowAlert(true);
@@ -257,7 +255,8 @@ const DetailMobil = () => {
                   </Button>
                   {showAlert && (
                     <Alert variant="danger" className="mt-3 w-50">
-                      Rentang tanggal melebihi 7 hari.
+                      Rentang tanggal melebihi 7 hari, maksimal untuk penyewaan
+                      mobil hanya 7 hari.
                     </Alert>
                   )}
                 </div>
