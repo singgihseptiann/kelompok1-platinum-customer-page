@@ -18,7 +18,7 @@ function MainOutlet() {
         <Testimony />
         <Banner />
         <Faq />
-        <Outlet />
+        {/* <Outlet /> */}
       </div>
     </div>
   );
