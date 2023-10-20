@@ -23,15 +23,15 @@ const LoginPage = () => {
         setSuccess("Login Successfully");
         localStorage.setItem("token", res.data.access_token);
         setTimeout(() => {
-          navigate("/cari-mobil");
+          navigate("/home");
           setSuccess("");
-        }, 2500);
+        }, 1500);
       }
 
       setLoad(false);
     } catch (error) {
       setError("Email or password is incorrect");
-      setTimeout(() => setError(""), 2500);
+      setTimeout(() => setError(""), 1500);
       setLoad(false);
     }
   };
@@ -42,9 +42,9 @@ const LoginPage = () => {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col className="d-flex flex-column justify-content-center">
+    <Container fluid>
+      <Row className>
+        <Col className="col-md-6 d-flex flex-column justify-content-center">
           <div className="mb-4" style={{ height: "34px", width: "80px", backgroundColor: "#CFD4ED" }}></div>
           <h3 className="mb-4" style={{ fontWeight: "bold" }}>
             Welcome Back!
@@ -70,7 +70,7 @@ const LoginPage = () => {
             Don’t have an account? <a href="#">Sign Up For Free</a>
           </p>
         </Col>
-        <Col className="d-none d-md-block">
+        <Col className="col-md-6 d-none d-md-block">
           <img src={`${process.env.PUBLIC_URL}/images/login.png`} alt="Login" className="login-img img-fluid" />
         </Col>
       </Row>

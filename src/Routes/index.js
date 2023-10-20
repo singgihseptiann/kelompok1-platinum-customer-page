@@ -10,7 +10,17 @@ import MainOutlet from "../components/Outlet/Outlet";
 import CariMobil from "../components/Mobil/CariMobil";
 import DetailMobil from "../components/Mobil/DetailMobil";
 import HasilPencarian from "../components/Mobil/HasilPencarian";
+import LoginPage from "../pages/login/Login";
+import SignupPage from "../pages/Signup/Signup";
 const routes = [
+  {
+    path: "login",
+    element: <LoginPage />,
+  },
+  {
+    path: "signup",
+    element: <SignupPage />,
+  },
   {
     path: "",
     element: <Navigate to="/home" />,
