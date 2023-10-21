@@ -10,6 +10,7 @@ import MainOutlet from "../components/Outlet/Outlet";
 import CariMobil from "../components/Mobil/CariMobil";
 import DetailMobil from "../components/Mobil/DetailMobil";
 import HasilPencarian from "../components/Mobil/HasilPencarian";
+import Payment from "../components/Content/Payment";
 const routes = [
   {
     path: "",
@@ -107,6 +108,16 @@ const routes = [
       {
         path: "",
         element: <DetailMobil />,
+      },
+    ],
+  },
+  {
+    path: "payment",
+    element: <Header />,
+    children: [
+      {
+        path: "",
+        element: <Payment />,
       },
     ],
   },
