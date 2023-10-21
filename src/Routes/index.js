@@ -10,7 +10,8 @@ import MainOutlet from "../components/Outlet/Outlet";
 import CariMobil from "../components/Mobil/CariMobil";
 import DetailMobil from "../components/Mobil/DetailMobil";
 import HasilPencarian from "../components/Mobil/HasilPencarian";
-import TiketCard from "../components/Payment/Etiket";
+import Payment from "../components/Content/Payment";
+import Etiket from "../components/Content/Etiket";
 
 const routes = [
   {
@@ -113,12 +114,22 @@ const routes = [
     ],
   },
   {
-    path: "tiket-card",
+    path: "payment",
     element: <Header />,
     children: [
       {
         path: "",
-        element: <TiketCard />,
+        element: <Payment />,
+      },
+    ],
+  },
+  {
+    path: "etiket",
+    element: <Header />,
+    children: [
+      {
+        path: "",
+        element: <Etiket />,
       },
     ],
   },
