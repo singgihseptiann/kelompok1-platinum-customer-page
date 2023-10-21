@@ -5,12 +5,22 @@ const handler = axios.create({
   timeout: 15000,
 });
 
-handler.interceptors.request.use((request) => {
-  if (request.url !== "/admin/auth/login") {
-    request.headers["access_token"] = `${localStorage.getItem("token")}`;
+handler.interceptors.request.use(
+  (config) => {
+    if (config.url !== "/admin/auth/login") {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      if (config.headers["Content-Type"] === "multipart/form-data") {
+        config.headers["Content-Type"] = "multipart/form-data";
+      }
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
   }
-
-  return request;
-});
+);
 
 export { handler };

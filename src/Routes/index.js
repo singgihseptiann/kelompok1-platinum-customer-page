@@ -1,4 +1,4 @@
-import { Navigate } from "react-router";
+import { Navigate } from "react-router-dom";
 import Header from "../pages/base/Header";
 
 import OurServices from "../components/Content/OurServices";
@@ -10,6 +10,8 @@ import MainOutlet from "../components/Outlet/Outlet";
 import CariMobil from "../components/Mobil/CariMobil";
 import DetailMobil from "../components/Mobil/DetailMobil";
 import HasilPencarian from "../components/Mobil/HasilPencarian";
+import TiketCard from "../components/Payment/Etiket";
+
 const routes = [
   {
     path: "",
@@ -107,6 +109,16 @@ const routes = [
       {
         path: "",
         element: <DetailMobil />,
+      },
+    ],
+  },
+  {
+    path: "tiket-card",
+    element: <Header />,
+    children: [
+      {
+        path: "",
+        element: <TiketCard />,
       },
     ],
   },
