@@ -1,4 +1,4 @@
-import { Navigate } from "react-router";
+import { Navigate } from "react-router-dom";
 import Header from "../pages/base/Header";
 
 import OurServices from "../components/Content/OurServices";
@@ -11,6 +11,8 @@ import CariMobil from "../components/Mobil/CariMobil";
 import DetailMobil from "../components/Mobil/DetailMobil";
 import HasilPencarian from "../components/Mobil/HasilPencarian";
 import Payment from "../components/Content/Payment";
+import Etiket from "../components/Content/Etiket";
+
 const routes = [
   {
     path: "",
@@ -118,6 +120,16 @@ const routes = [
       {
         path: "",
         element: <Payment />,
+      },
+    ],
+  },
+  {
+    path: "etiket",
+    element: <Header />,
+    children: [
+      {
+        path: "",
+        element: <Etiket />,
       },
     ],
   },
