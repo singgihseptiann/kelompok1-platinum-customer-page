@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { registerAuth } from "../../store/auth";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -9,6 +12,7 @@ const LoginPage = () => {
   const [error, setError] = useState("");
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,13 +25,14 @@ const LoginPage = () => {
 
       if (res.status === 201) {
         setSuccess("Login Successfully");
-        localStorage.setItem("token", res.data.access_token);
         setTimeout(() => {
           navigate("/home");
           setSuccess("");
         }, 1500);
+        dispatch(registerAuth(res.data));
+        localStorage.removeItem("email");
+        localStorage.removeItem("role");
       }
-
       setLoad(false);
     } catch (error) {
       setError("Email or password is incorrect");
@@ -49,25 +54,27 @@ const LoginPage = () => {
           <h3 className="mb-4" style={{ fontWeight: "bold" }}>
             Welcome Back!
           </h3>
-          <Form onSubmit={handleSubmit} method="post">
-            <Form.Group controlId="email" className="mb-4">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Example: johndee@gmail.com" name="email" value={form.email} onChange={handleChange} />
-            </Form.Group>
+          <div>
+            <Form onSubmit={handleSubmit} method="post">
+              <Form.Group controlId="email" className="mb-4">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="Example: johndee@gmail.com" name="email" value={form.email} onChange={handleChange} />
+              </Form.Group>
 
-            <Form.Group controlId="password" className="mb-4">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="6+ characters" name="password" value={form.password} onChange={handleChange} />
-            </Form.Group>
+              <Form.Group controlId="password" className="mb-4">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="6+ characters" name="password" value={form.password} onChange={handleChange} />
+              </Form.Group>
 
-            <Button variant="primary" type="submit" className="w-100">
-              Sign In
-            </Button>
-          </Form>
+              <Button variant="primary" type="submit" className="w-100">
+                Sign In
+              </Button>
+            </Form>
+          </div>
           {success && <p className="text-success">{success}</p>}
           {error && <p className="text-danger">{error}</p>}
           <p className="text-center mt-4">
-            Don’t have an account? <a href="#">Sign Up For Free</a>
+            Don’t have an account? <Link to="/signup">Sign Up For Free</Link>
           </p>
         </Col>
         <Col className="col-md-6 d-none d-md-block">

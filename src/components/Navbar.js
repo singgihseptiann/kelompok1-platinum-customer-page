@@ -22,15 +22,9 @@ function NavigationBar() {
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-          <Navbar.Offcanvas
-            id={`offcanvasNavbar-expand-${expand}`}
-            aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-            placement="end"
-          >
+          <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                BCR
-              </Offcanvas.Title>
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>BCR</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
@@ -47,14 +41,10 @@ function NavigationBar() {
                   FAQ
                 </Nav.Link>
               </Nav>
-              <Link to="/cari-mobil">
+              <Link to="/signup">
                 {" "}
                 {/* Use Link to navigate */}
-                <button
-                  type="button"
-                  className="btn text-white btn-mobile"
-                  style={{ backgroundColor: "#5CB85F" }}
-                >
+                <button type="button" className="btn text-white btn-mobile" style={{ backgroundColor: "#5CB85F" }}>
                   Register
                 </button>
               </Link>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SignupPage = () => {
   const [form, setForm] = useState({ fullName: "", emailAddress: "", password: "" });
@@ -21,7 +21,7 @@ const SignupPage = () => {
       });
 
       if (res.status === 201) {
-        setSuccess("Registration Successful");
+        setSuccess("Registration Successfully. You will be directed to login Page. Please login using your account");
         setTimeout(() => {
           navigate("/login");
           setSuccess("");
@@ -30,7 +30,7 @@ const SignupPage = () => {
 
       setLoad(false);
     } catch (err) {
-      if (err.response && err.response.status === 400 && err.response.data === "Email Already Exists.") {
+      if (err.response && err.response.status === 400 && err.response.data === "Email Already Exists. Please check your account") {
         setError("Email sudah terdaftar. Silakan gunakan email lain.");
       } else {
         setError("Pendaftaran gagal. Silakan periksa informasi Anda.");
@@ -76,7 +76,7 @@ const SignupPage = () => {
           {error && <p className="text-danger mt-3">{error}</p>}
 
           <p className="text-center mt-4">
-            Sudah punya akun? <a href="/login">Login di sini</a>
+            Sudah punya akun? <Link to="/login">Login di sini </Link>
           </p>
         </Col>
         <Col className="d-none d-md-block">
