@@ -19,13 +19,9 @@
     "react-calendar": "^4.6.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
-<<<<<<< HEAD
+    "react-pdf": "^7.5.1",
     "react-redux": "^8.1.3",
     "react-router-dom": "^6.17.0",
-=======
-    "react-pdf": "^7.5.1",
-    "react-router-dom": "^6.15.0",
->>>>>>> 29a4142e4f779d08fa0918dec271b6a0eddaf3e9
     "react-scripts": "5.0.1",
     "react-stepper-horizontal": "^1.0.11",
     "reactstrap": "^9.2.0",
