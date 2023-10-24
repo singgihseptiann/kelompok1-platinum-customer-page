@@ -75,7 +75,10 @@ function Etiket() {
             </Container>
             <div>
               {order?.slip ? (
-                <Document file={order.slip} onLoadSuccess={onDocumentLoadSuccess}>
+                <Document
+                  file={order.slip}
+                  onLoadSuccess={onDocumentLoadSuccess}
+                >
                   <Page pageNumber={pageNumber} />
                 </Document>
               ) : (

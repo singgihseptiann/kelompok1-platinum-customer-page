@@ -13,7 +13,6 @@ import LoginPage from "../pages/login/Login";
 import SignupPage from "../pages/Signup/Signup";
 import Payment from "../components/Content/Payment";
 import Etiket from "../components/Payment/Etiket";
-
 const routes = [
   {
     path: "login",
@@ -25,7 +24,15 @@ const routes = [
   },
   {
     path: "",
-    element: <Navigate to="/home" />,
+    element: <Navigate to="/login" />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <SignupPage />,
   },
   {
     path: "home",
@@ -35,7 +42,6 @@ const routes = [
         path: "",
         element: (
           <>
-            {/* <HeroSection /> */}
             <MainOutlet />
           </>
         ),
