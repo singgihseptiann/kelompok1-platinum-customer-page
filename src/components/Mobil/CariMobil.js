@@ -11,13 +11,6 @@ const CariMobil = () => {
 
   const login = async () => {
     try {
-      const response = await api.loginAdmin({
-        email: "admin@bcr.io",
-        password: "123456",
-      });
-
-      localStorage.setItem("token", response.data.access_token);
-
       const carResponse = await api.getCars({ page: 1, pageSize: 10 });
 
       console.log("cars", carResponse);
