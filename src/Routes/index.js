@@ -1,6 +1,5 @@
 import { Navigate } from "react-router-dom";
 import Header from "../pages/base/Header";
-
 import OurServices from "../components/Content/OurServices";
 import WhyUs from "../components/Content/WhyUs";
 import Testimony from "../components/Content/Testimony";
@@ -10,10 +9,20 @@ import MainOutlet from "../components/Outlet/Outlet";
 import CariMobil from "../components/Mobil/CariMobil";
 import DetailMobil from "../components/Mobil/DetailMobil";
 import HasilPencarian from "../components/Mobil/HasilPencarian";
+import LoginPage from "../pages/login/Login";
+import SignupPage from "../pages/Signup/Signup";
 import Payment from "../components/Content/Payment";
-import Etiket from "../components/Content/Etiket";
+import Etiket from "../components/Payment/Etiket";
 
 const routes = [
+  {
+    path: "login",
+    element: <LoginPage />,
+  },
+  {
+    path: "signup",
+    element: <SignupPage />,
+  },
   {
     path: "",
     element: <Navigate to="/home" />,
