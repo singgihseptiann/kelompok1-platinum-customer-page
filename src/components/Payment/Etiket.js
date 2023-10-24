@@ -7,7 +7,6 @@ import { handler } from "../../api/handler";
 
 import button_download from "../../assets/images/button_download.png";
 import icon_success from "../../assets/images/icon_success.png";
-// import HeaderStepper from './HeaderStepper';
 
 function Etiket() {
   const [numPages, setNumPages] = useState(null);
@@ -63,9 +62,7 @@ function Etiket() {
         </div>
         <Card style={{ width: "50%", margin: "auto" }}>
           <CardBody>
-            <Container
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
+            <Container style={{ display: "flex", justifyContent: "space-between" }}>
               <div>
                 <h3>Invoice</h3>
                 <p>{order?.invoiceNumber}</p>

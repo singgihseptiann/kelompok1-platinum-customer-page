@@ -6,43 +6,29 @@ function Footer() {
     <Container className="mt-5">
       <Row>
         <Col className="col-lg-5 col-12">
-          <h1 className="fs-4 fw-bold">
-            Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000
-          </h1>
+          <h1 className="fs-4 fw-bold">Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000</h1>
           <p className="fw-bold">binarcarrental@gmail.com</p>
           <p className="fw-bold">081-233-334-808</p>
         </Col>
         <Col className="col-lg-2 col-12">
           <ListGroup className="list-group-flush fw-bold">
             <ListGroup.Item className="p-0 border-0">
-              <Link
-                to="/services"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
+              <Link to="/services" style={{ textDecoration: "none", color: "inherit" }}>
                 Our services
               </Link>
             </ListGroup.Item>
             <ListGroup.Item className="p-0 pb-2 border-0">
-              <Link
-                to="/why-us"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
+              <Link to="/why-us" style={{ textDecoration: "none", color: "inherit" }}>
                 Why Us
               </Link>
             </ListGroup.Item>
             <ListGroup.Item className="p-0 pb-2 border-0">
-              <Link
-                to="/testimony"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
+              <Link to="/testimony" style={{ textDecoration: "none", color: "inherit" }}>
                 Testimonial
               </Link>
             </ListGroup.Item>
             <ListGroup.Item className="p-0 pb-2 border-0">
-              <Link
-                to="/faq"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
+              <Link to="/faq" style={{ textDecoration: "none", color: "inherit" }}>
                 FAQ
               </Link>
             </ListGroup.Item>

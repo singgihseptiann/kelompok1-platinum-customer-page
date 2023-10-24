@@ -18,16 +18,10 @@ const auth = createSlice({
       localStorage.setItem("email", action.payload.email);
       localStorage.setItem("role", action.payload.role);
     },
-    logOut: (state, action) => {
-      state.email = "";
-      state.role = "";
-      state.token = "";
 
-      localStorage.removeItem("token");
-    },
     remakeToken: (state, action) => {},
   },
 });
 
-export const { registerAuth, logOut } = auth.actions;
+export const { registerAuth } = auth.actions;
 export default auth.reducer;
