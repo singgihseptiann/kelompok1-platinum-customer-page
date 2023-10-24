@@ -23,7 +23,6 @@ const routes = [
         path: "",
         element: (
           <>
-            {/* <HeroSection /> */}
             <MainOutlet />
           </>
         ),
