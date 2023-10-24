@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Document, Page } from 'react-pdf';
-import { useParams } from 'react-router-dom';
-import { Card, CardBody, Container } from 'reactstrap';
+import React, { useState, useEffect } from "react";
+import { Document, Page } from "react-pdf";
+import { useParams } from "react-router-dom";
+import { Card, CardBody, Container } from "reactstrap";
 
-import { handler } from '../../api/handler';
+import { handler } from "../../api/handler";
 
-import button_download from '../../assets/images/button_download.png';
-import icon_success from '../../assets/images/icon_success.png';
-import HeaderStepper from './HeaderStepper';
+import button_download from "../../assets/images/button_download.png";
+import icon_success from "../../assets/images/icon_success.png";
+// import HeaderStepper from './HeaderStepper';
 
 function Etiket() {
   const [numPages, setNumPages] = useState(null);
@@ -43,10 +43,10 @@ function Etiket() {
       {/* <HeaderStepper /> */}
       <div
         style={{
-          height: '130px',
-          backgroundColor: '#F1F3FF',
-          position: 'relative',
-          zIndex: '-2',
+          height: "130px",
+          backgroundColor: "#F1F3FF",
+          position: "relative",
+          zIndex: "-2",
         }}
       >
         <br />
@@ -61,10 +61,10 @@ function Etiket() {
           <h3>Pembayaran Berhasil!</h3>
           <p>Tunjukkan invoice ini ke petugas BCR di titik temu.</p>
         </div>
-        <Card style={{ width: '50%', margin: 'auto' }}>
+        <Card style={{ width: "50%", margin: "auto" }}>
           <CardBody>
             <Container
-              style={{ display: 'flex', justifyContent: 'space-between' }}
+              style={{ display: "flex", justifyContent: "space-between" }}
             >
               <div>
                 <h3>Invoice</h3>
@@ -78,15 +78,16 @@ function Etiket() {
             </Container>
             <div>
               {order?.slip ? (
-                <Document file={order.slip} onLoadSuccess={onDocumentLoadSuccess}>
+                <Document
+                  file={order.slip}
+                  onLoadSuccess={onDocumentLoadSuccess}
+                >
                   <Page pageNumber={pageNumber} />
                 </Document>
               ) : (
                 <p>Slip is not available</p>
               )}
-              <p>
-                {/* Page {pageNumber} of {numPages} */}
-              </p>
+              <p>{/* Page {pageNumber} of {numPages} */}</p>
             </div>
           </CardBody>
         </Card>

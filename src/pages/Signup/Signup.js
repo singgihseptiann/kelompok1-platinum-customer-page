@@ -34,3 +34,4 @@ const SignupPage = () => {
     </Container>
   );
 };
+export default SignupPage;

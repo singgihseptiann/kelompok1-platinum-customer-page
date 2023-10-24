@@ -47,7 +47,7 @@ function NavigationBar() {
                   FAQ
                 </Nav.Link>
               </Nav>
-              <Link to="/cari-mobil">
+              <Link to="/register">
                 {" "}
                 {/* Use Link to navigate */}
                 <button

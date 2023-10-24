@@ -10,7 +10,7 @@ handler.interceptors.request.use(
     if (config.url !== "/admin/auth/login") {
       const token = localStorage.getItem("token");
       if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+        config.headers.access_token = token;
       }
       if (config.headers["Content-Type"] === "multipart/form-data") {
         config.headers["Content-Type"] = "multipart/form-data";
