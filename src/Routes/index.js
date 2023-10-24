@@ -1,4 +1,4 @@
-import { Navigate } from "react-router";
+import { Navigate } from "react-router-dom";
 import Header from "../pages/base/Header";
 
 import OurServices from "../components/Content/OurServices";
@@ -12,6 +12,9 @@ import DetailMobil from "../components/Mobil/DetailMobil";
 import HasilPencarian from "../components/Mobil/HasilPencarian";
 import LoginPage from "../pages/login/Login";
 import SignupPage from "../pages/Signup/Signup";
+import Payment from "../components/Content/Payment";
+import Etiket from "../components/Content/Etiket";
+
 const routes = [
   {
     path: "login",
@@ -117,6 +120,26 @@ const routes = [
       {
         path: "",
         element: <DetailMobil />,
+      },
+    ],
+  },
+  {
+    path: "payment",
+    element: <Header />,
+    children: [
+      {
+        path: "",
+        element: <Payment />,
+      },
+    ],
+  },
+  {
+    path: "etiket",
+    element: <Header />,
+    children: [
+      {
+        path: "",
+        element: <Etiket />,
       },
     ],
   },

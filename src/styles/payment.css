@@ -15,6 +15,14 @@
   justify-content: space-between;
 }
 
+@media screen and (max-width: 400px) {
+  .payment-header-container{
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 12px;
+  }
+}
+
 .payment-header {
   display: flex;
   align-items: center;
@@ -120,6 +128,12 @@
 .pembayaran-wrapper {
   display: flex;
   gap: 32px;
+}
+
+@media screen and (max-width: 400px) {
+  .pembayaran-wrapper {
+    flex-direction: column;
+  }
 }
 
 .pilihan-bank-container {
