@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { registerAuth } from "../../Store/Auth";
+import { registerAuth } from "../../Store/auth";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
