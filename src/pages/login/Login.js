@@ -50,9 +50,9 @@ const LoginPage = () => {
     <Container fluid style={{ height: "100vh" }}>
       <Row>
         <Col className="col-md-6 d-flex flex-column justify-content-center">
-          <div className="left-wrapper">
+          <div className="mx-auto">
             <div
-              className="mb-4"
+              className="mb-4 "
               style={{
                 height: "34px",
                 width: "80px",
@@ -63,7 +63,7 @@ const LoginPage = () => {
               Welcome Back!
             </h3>
             <div>
-              <Form onSubmit={handleSubmit} method="post">
+              <Form onSubmit={handleSubmit} method="post" className="">
                 <Form.Group controlId="email" className="mb-4">
                   <Form.Label>Email</Form.Label>
                   <Form.Control type="email" placeholder="Example: johndee@gmail.com" name="email" value={form.email} onChange={handleChange} />
