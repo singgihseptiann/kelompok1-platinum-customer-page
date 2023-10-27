@@ -17,12 +17,13 @@ function HeaderStepper(props) {
   return (
     <Container>
       <Row>
-        <Col sm={4} className="flex align-items-center" onClick={handleBack}>
+        <Col sm={4} className="flex align-items-center">
           <div>
             <img
               src={ArrowLeft}
-              style={{ marginTop: '-16px' }}
+              style={{ marginTop: '-16px', cursor: 'pointer' }}
               alt="BackArrow"
+              onClick={handleBack}
             />
           </div>
           <p style={{ marginLeft: '10px' }}>
