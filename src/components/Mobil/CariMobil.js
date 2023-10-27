@@ -63,7 +63,14 @@ const CariMobil = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (formValid) {
+
+    // Validasi setiap field secara terpisah
+    if (
+      formData.namaMobil ||
+      formData.kategori ||
+      formData.harga ||
+      formData.status
+    ) {
       const carResponse1 = await api.getCars({
         name: formData.namaMobil,
         category: formData.kategori,
@@ -76,9 +83,10 @@ const CariMobil = () => {
       const path = `/hasil-cari?namaMobil=${formData.namaMobil}&kategori=${formData.kategori}&harga=${formData.harga}&status=${formData.status}`;
       navigate(path, { state: cars });
     } else {
-      console.log("Form tidak valid. Harap isi semua field.");
+      console.log("Harap isi setidaknya satu field.");
     }
   };
+
   const rowStyle = {
     margin: "0", // Mengatur margin menjadi 0
   };
@@ -149,20 +157,14 @@ const CariMobil = () => {
                   <option value="avalible">Available</option>
                 </Form.Select>
               </Form.Group>
-              {/* <Link
-                className=""
-                to={`/hasil-cari?namaMobil=${formData.namaMobil}&kategori=${formData.kategori}&harga=${formData.harga}&status=${formData.status}`}
-              > */}
               <button
                 type="submit"
                 className="btn text-white "
                 style={{ marginTop: "30px", backgroundColor: "#5CB85F" }}
                 onClick={login}
-                disabled={!formValid}
               >
                 Cari Mobil
               </button>
-              {/* </Link> */}
             </Form>
           </Col>
         </Row>
