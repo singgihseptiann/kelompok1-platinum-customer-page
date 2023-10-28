@@ -5,7 +5,7 @@ import { Card, CardBody, Container } from "reactstrap";
 import { handler } from "../../api/handler";
 import button_download from "../../assets/images/button_download.png";
 import icon_success from "../../assets/images/icon_success.png";
-import HeaderStepper from "./HeadStepper"; 
+import HeaderStepper from "./HeadStepper";
 
 function Etiket() {
   const [numPages, setNumPages] = useState(null);
@@ -37,9 +37,9 @@ function Etiket() {
   };
 
   return (
-    <div>
-      <HeaderStepper active={3} orderID={orderId} />
-      <div className="text-center">
+    <div style={{ marginTop: '-100px' }}>
+      <HeaderStepper active={2} orderID={orderId} /> {/* Menggunakan nilai yang sesuai untuk properti 'active' */}
+      <div className="text-center" style={{ marginTop: '50px' }}>
         <img src={icon_success} alt="success" />
         <br />
         <br />

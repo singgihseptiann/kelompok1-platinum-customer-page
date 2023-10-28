@@ -38,7 +38,6 @@ function HeaderStepper(props) {
           hello
         </Col>
         <Col sm={3}>
-          {' '}
           <Stepper
             steps={[
               { title: 'Pilih Metode' },
@@ -46,18 +45,23 @@ function HeaderStepper(props) {
               { title: 'Tiket' }
             ]}
             activeStep={active}
-            size={40}
-            circleFontSize={15}
-            titleFontSize={15}
+            size={30}
+            circleFontSize={15} 
+            titleFontSize={15} 
             activeColor="#0D28A6"
             completeColor="#0D28A6"
             defaultBorderColor="#0D28A6"
             defaultBorderStyle="solid"
             defaultBorderWidth={1}
             defaultColor="#F1F3FF"
-            defaultTitleColor="	#000"
+            defaultTitleColor="#000"
+            completeBarColor="#0D28A6" 
+            activeTitleColor="#0D28A6" 
+            activeBorderColor="#0D28A6" 
+            completeTitle={<i className="bi bi-check2" />} // Menggunakan icon checklist untuk langkah yang sudah selesai
           />
         </Col>
+
       </Row>
     </Container>
   );
