@@ -2,23 +2,22 @@ import React, { useState, useEffect } from "react";
 import { Document, Page } from "react-pdf";
 import { useParams } from "react-router-dom";
 import { Card, CardBody, Container } from "reactstrap";
-
 import { handler } from "../../api/handler";
-
 import button_download from "../../assets/images/button_download.png";
 import icon_success from "../../assets/images/icon_success.png";
+import HeaderStepper from "./HeadStepper";
 
 function Etiket() {
   const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [order, setOrder] = useState(null); // Moved this line up
+  const [pageNumber, setPageNumber] = useState(0);
+  const [order, setOrder] = useState(null);
 
   const { orderId } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await handler.get(`/admin/orders/${orderId}`, {
+        const response = await handler.get(`/customer/order/${orderId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -38,28 +37,15 @@ function Etiket() {
   };
 
   return (
-    <div>
-      {/* <HeaderStepper /> */}
-      <div
-        style={{
-          height: "130px",
-          backgroundColor: "#F1F3FF",
-          position: "relative",
-          zIndex: "-2",
-        }}
-      >
+    <div style={{ marginTop: '-100px' }}>
+      <HeaderStepper active={2} orderID={orderId} /> {/* Menggunakan nilai yang sesuai untuk properti 'active' */}
+      <div className="text-center" style={{ marginTop: '50px' }}>
+        <img src={icon_success} alt="success" />
         <br />
-      </div>
-      <br />
-      <br />
-      <Container>
-        <div className="text-center">
-          <img src={icon_success} alt="success" />
-          <br />
-          <br />
-          <h3>Pembayaran Berhasil!</h3>
-          <p>Tunjukkan invoice ini ke petugas BCR di titik temu.</p>
-        </div>
+        <br />
+        <h3>Pembayaran Berhasil!</h3>
+        <p>Tunjukkan invoice ini ke petugas BCR di titik temu.</p>
+
         <Card style={{ width: "50%", margin: "auto" }}>
           <CardBody>
             <Container style={{ display: "flex", justifyContent: "space-between" }}>
@@ -69,27 +55,27 @@ function Etiket() {
               </div>
               <div>
                 <a href={order?.slip} download="Slip.pdf">
-                  <img src={button_download} alt="download" />
+                  <img 
+                  src={button_download} 
+                  alt="Download" 
+                  title="Download Slip"
+                  style={{ cursor: 'pointer' }} />
                 </a>
               </div>
             </Container>
             <div>
               {order?.slip ? (
-                <Document
-                  file={order.slip}
-                  onLoadSuccess={onDocumentLoadSuccess}
-                >
+                <Document file={order.slip} onLoadSuccess={onDocumentLoadSuccess}>
                   <Page pageNumber={pageNumber} />
                 </Document>
               ) : (
                 <p>Slip is not available</p>
               )}
-              <p>{/* Page {pageNumber} of {numPages} */}</p>
             </div>
           </CardBody>
         </Card>
-      </Container>
-      <br />
+        <br />
+      </div>
     </div>
   );
 }

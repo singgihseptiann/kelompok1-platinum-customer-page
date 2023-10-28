@@ -8,4 +8,5 @@ export default {
   getCarById: (id, queryParams) =>
     handler.get(`/customer/car/${id}`, { params: queryParams }),
   putCarById: (id, body) => handler.put(`/customer/car/${id}`, body),
+  putSlip: (orderId, body) => handler.put(`/customer/order/${orderId}/slip`, body),
 };
