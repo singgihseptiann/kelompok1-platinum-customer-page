@@ -11,7 +11,7 @@ import DetailMobil from "../components/Mobil/DetailMobil";
 import HasilPencarian from "../components/Mobil/HasilPencarian";
 import LoginPage from "../pages/login/Login";
 import SignupPage from "../pages/Signup/Signup";
-import Payment from "../components/Content/Payment";
+import Payment from "../components/FirstPayment/Payment";
 import Etiket from "../components/Payment/Etiket";
 const routes = [
   {
