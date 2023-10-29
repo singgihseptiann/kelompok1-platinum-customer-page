@@ -19,6 +19,7 @@ function Payment() {
   const styleToggle = {
     transform: isToggle ? "rotate(180deg)" : "",
     transition: "transform 500ms ease",
+    cursor: "pointer",
   };
   const { id } = useParams();
   const navigate = useNavigate();
@@ -111,7 +112,7 @@ function Payment() {
       <div className="payment-container">
         <div className="payment-header-container">
           <div className="payment-header">
-            <i class="bi bi-arrow-left"></i>
+            <i class="bi bi-arrow-left" style={{ cursor: "pointer" }}></i>
             <p>Pembayaran</p>
           </div>
           <div className="steps">
