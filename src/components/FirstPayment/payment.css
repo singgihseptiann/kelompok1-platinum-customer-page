@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 400px) {
-  .payment-header-container{
+  .payment-header-container {
     flex-direction: column;
     align-items: flex-start;
     padding-left: 12px;
@@ -169,6 +169,17 @@
   border-bottom: 1px solid #eeeeee;
 }
 
+.bank-wrapper h5 {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #000000;
+  padding-left: 16px;
+  margin-bottom: 0px;
+}
+
 .bank-container {
   width: 61px;
   padding: 6px 16px;
@@ -195,6 +206,12 @@
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
+}
+
+.bank-box {
+  width: 400px;
+  height: 18px;
+  padding-bottom: 30px;
 }
 
 .detail-container {
