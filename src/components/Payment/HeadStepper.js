@@ -1,9 +1,9 @@
 import React from 'react';
-import Stepper from 'react-stepper-horizontal/lib/Stepper';
 import { Col, Container, Row } from 'reactstrap';
 import { useNavigate } from 'react-router-dom'; 
 
 import ArrowLeft from '../../assets/images/ArrowLeft.png';
+import checklist from '../../assets/images/Check.svg';
 
 function HeaderStepper(props) {
   const { active } = props;
@@ -15,55 +15,65 @@ function HeaderStepper(props) {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col sm={4} className="flex align-items-center">
-          <div>
-            <img
-              src={ArrowLeft}
-              style={{ marginTop: '-16px', cursor: 'pointer' }}
-              alt="BackArrow"
-              onClick={handleBack}
-            />
-          </div>
-          <p style={{ marginLeft: '10px' }}>
-            Pembayaran
-            <br />
-            <span style={{ fontSize: '12px', fontWeight: '400' }}>
-              Order ID: {orderID}
-            </span>
-          </p>
-        </Col>
-        <Col sm={5} style={{ opacity: '0%' }}>
-          hello
-        </Col>
-        <Col sm={3}>
-          <Stepper
-            steps={[
-              { title: 'Pilih Metode' },
-              { title: 'Bayar' },
-              { title: 'Tiket' }
-            ]}
-            activeStep={active}
-            size={30}
-            circleFontSize={15} 
-            titleFontSize={15} 
-            activeColor="#0D28A6"
-            completeColor="#0D28A6"
-            defaultBorderColor="#0D28A6"
-            defaultBorderStyle="solid"
-            defaultBorderWidth={1}
-            defaultColor="#F1F3FF"
-            defaultTitleColor="#000"
-            completeBarColor="#0D28A6" 
-            activeTitleColor="#0D28A6" 
-            activeBorderColor="#0D28A6" 
-            completeTitle={<i className="bi bi-check2" />} // Menggunakan icon checklist untuk langkah yang sudah selesai
-          />
-        </Col>
-
-      </Row>
-    </Container>
+    <div className="payment-header-container">
+      <Container>
+        <Row>
+          <Col sm={4} className="flex align-items-center">
+            <div>
+              <img
+                src={ArrowLeft}
+                style={{ marginTop: '-16px', cursor: 'pointer' }}
+                alt="BackArrow"
+                onClick={handleBack}
+              />
+            </div>
+            <p style={{ marginLeft: '10px' }}>
+              Pembayaran
+              <br />
+              <span style={{ fontSize: '12px', fontWeight: '400' }}>
+                Order ID: {orderID}
+              </span>
+            </p>
+          </Col>
+          <Col sm={5} style={{ opacity: '0%' }}>
+            hello
+          </Col>
+          <Col sm={3} style={{ display: 'flex', justifyContent: 'center' }}>
+            <div className="steps">
+              <div className="step">
+                <div
+                  className="eclips-step"
+                  style={{ backgroundColor: "blue", color: "white" }}
+                >
+                  <img src={checklist} alt="" />
+                </div>
+                <p style={{ marginBottom: '0' }}>Pilih Metode</p>
+                <div className="line-step"></div>
+              </div>
+              <div className="step">
+                <div
+                  className="eclips-step"
+                  style={{ backgroundColor: "blue", color: "white" }}
+                >
+                  <img src={checklist} alt="" />
+                </div>
+                <p style={{ marginBottom: '0' }}>Bayar</p>
+                <div className="line-step"></div>
+              </div>
+              <div className="step">
+                <div 
+                  className="eclips-step"
+                  style={{ backgroundColor: "blue", color: "white" }}
+                >
+                  3
+                </div>
+                <p style={{ marginBottom: '0' }}>Tiket</p>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 
