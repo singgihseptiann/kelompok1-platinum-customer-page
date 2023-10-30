@@ -13,6 +13,7 @@ import LoginPage from "../pages/login/Login";
 import SignupPage from "../pages/Signup/Signup";
 import Payment from "../components/FirstPayment/Payment";
 import Etiket from "../components/Payment/Etiket";
+import BankPayment from "../components/SecondPayment/BankPayment";
 const routes = [
   {
     path: "login",
@@ -135,6 +136,16 @@ const routes = [
       {
         path: "",
         element: <Payment />,
+      },
+    ],
+  },
+  {
+    path: "second-payment",
+    element: <Header />,
+    children: [
+      {
+        path: "",
+        element: <BankPayment />,
       },
     ],
   },
