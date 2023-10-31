@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { registerAuth } from "../../store/auth";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const LoginPage = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [load, setLoad] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -46,8 +48,12 @@ const LoginPage = () => {
     setForm({ ...form, [name]: value });
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <Container fluid style={{ height: "100vh" }}>
+    <Container fluid>
       <Row>
         <Col className="col-md-6 d-flex flex-column justify-content-center">
           <div className="mx-auto">
@@ -71,7 +77,13 @@ const LoginPage = () => {
 
                 <Form.Group controlId="password" className="mb-4">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="6+ characters" name="password" value={form.password} onChange={handleChange} />
+                  <Form.Control type={showPassword ? "text" : "password"} placeholder="6+ characters" name="password" value={form.password} onChange={handleChange} />
+                  <div className="d-flex flex-row justify-space-between align-items-center">
+                    <Button variant="link" className="password-toggle" onClick={togglePasswordVisibility}>
+                      {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    </Button>
+                    <div>Show Password</div>
+                  </div>
                 </Form.Group>
 
                 <Button variant="primary" type="submit" className="w-100">
@@ -87,7 +99,7 @@ const LoginPage = () => {
           </div>
         </Col>
         <Col className="col-md-6 d-none d-md-block">
-          <img src={`${process.env.PUBLIC_URL}/images/login.png`} alt="Login" className="login-img" />
+          <img src={`${process.env.PUBLIC_URL}/images/login.png`} alt="Login" className="login-img img-fluid" />
         </Col>
       </Row>
     </Container>
