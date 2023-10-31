@@ -12,7 +12,7 @@
 // import NavigationBar from "./components/Navbar";
 // import Footer from "./components/Footer";
 // import Payment from "./components/Content/Payment";
-import LoginPage from "./pages/login/Login";
+// import LoginPage from "./pages/login/Login";
 
 // function App() {
 //   return (
@@ -42,7 +42,7 @@ import LoginPage from "./pages/login/Login";
 import "./App.css";
 import { useRoutes } from "react-router";
 
-import { routes } from "./Routes";
+import { routes } from "./routes";
 
 const App = () => {
   return useRoutes(routes);
