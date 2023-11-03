@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import blankimage from "../../assets/images/blankpict.svg";
 import CountMinute from "../Countdown/CountMinute";
 import "./confirmupload.css";
 import axios from "axios";
+import { Button } from "react-bootstrap";
 
 const ConfirmUpload = () => {
   const [image, setImage] = useState(blankimage);
   const [photo, setPhoto] = useState("");
   const [isUpload, setIsUpload] = useState(false);
+  const navigate = useNavigate();
 
   const handleImage = (e) => {
     setIsUpload(true);
@@ -19,13 +21,14 @@ const ConfirmUpload = () => {
   const handleUploadPayment = async () => {
     const token = localStorage.getItem("token");
     const order_id = localStorage.getItem("order_id");
-    console.log(token);
+
+    // console.log(token);
     const api = `https://api-car-rental.binaracademy.org/customer/order/${order_id}/slip`;
 
     const sendSlip = {
       slip: image,
     };
-    console.log(image);
+    // console.log(image);
 
     const configUploadPayment = {
       headers: {
@@ -37,7 +40,8 @@ const ConfirmUpload = () => {
 
     try {
       const responses = await axios.put(api, sendSlip, configUploadPayment);
-      console.log(responses);
+      // console.log(responses);
+      navigate(`/etiket`);
     } catch (err) {
       console.log(err);
     }
@@ -82,9 +86,9 @@ const ConfirmUpload = () => {
             <label htmlFor="input">Upload</label>
           </button>
         ) : (
-          <Link to={"etiket"} onClick={handleUploadPayment}>
-            Konfirmasi
-          </Link>
+          <button onClick={handleUploadPayment}>
+            <label>Konfirmasi</label>
+          </button>
         )}
       </div>
     </>
