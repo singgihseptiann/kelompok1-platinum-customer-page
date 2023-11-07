@@ -10,7 +10,7 @@ import {
   Button,
   Alert,
 } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../../api";
 import { AiOutlineCalendar } from "react-icons/ai";
 import "./style.css";
@@ -22,6 +22,8 @@ const DetailMobil = () => {
   const { id } = useParams();
   const [carData, setCarData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [buttonShow, setButtonShow] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchCarById() {
@@ -52,6 +54,13 @@ const DetailMobil = () => {
     setCalendarVisibility(!isCalendarVisible);
   };
 
+  const handleGoPayment = () => {
+    localStorage.setItem("start_rent", startDate);
+    localStorage.setItem("end_rent", endDate);
+    localStorage.setItem("id_car", id);
+    navigate(`/payment/${id}`);
+  };
+
   const handleDateChange = (dates) => {
     if (dates[0] && dates[1]) {
       setStartDate(dates[0]);
@@ -78,6 +87,7 @@ const DetailMobil = () => {
     if (startDate && endDate) {
       console.log("Tanggal awal:", startDate);
       console.log("Tanggal akhir:", endDate);
+      setButtonShow(true);
     } else {
       console.log("Pilih rentang tanggal terlebih dahulu.");
     }
@@ -230,6 +240,15 @@ const DetailMobil = () => {
                   <Card.Text className="fw-bold d-flex justify-content-between">
                     <span>Kategori:</span>
                     <span>{carData ? carData.category : ""}</span>
+                  </Card.Text>
+                  <Card.Text className="success fw-bold d-flex justify-content-center">
+                    {buttonShow === true ? (
+                      <Button variant="success" onClick={handleGoPayment}>
+                        Lanjutkan Pembayaran{" "}
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
                   </Card.Text>
                 </Card.Body>
               </Card>

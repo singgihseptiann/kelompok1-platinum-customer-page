@@ -1,12 +1,9 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import "./bankpayment.css";
 import CountDay2 from "../Countdown/CountDay";
-import ConvertRupiah from "../ConvertRupiah/ConvertRupiah";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { BsClipboard } from "react-icons/bs";
 import checklist from "../../assets/images/Check.svg";
-import moment from "moment";
-import "moment/locale/id";
 import {
   day_name,
   month_name,
@@ -17,21 +14,25 @@ import {
 import ConfirmUpload from "../ConfirmUpload/ConfirmUpload";
 import getMethodsPayment from "./const.js";
 import "./bankpayment.css";
+import { useNavigate } from "react-router-dom";
 
 const BankPayment = () => {
   let dataBank = [{}];
   const bank = localStorage.getItem("bank");
-  const totalHarga = localStorage.getItem("Total_Harga");
+  const total_price = parseInt(localStorage.getItem("total_harga"));
   const [classState, setClassState] = useState(1);
   const textRef = useRef(null);
   const textRef2 = useRef(null);
   const [confirm, setConfirm] = useState(false);
   const payment = getMethodsPayment();
+  const id = localStorage.getItem("id_car");
+  const order_id = localStorage.getItem("order_id");
 
   const item = payment.find((item) => item.id === 1);
   const item2 = payment.find((item) => item.id === 2);
   const item3 = payment.find((item) => item.id === 3);
   const item4 = payment.find((item) => item.id === 4);
+  const navigate = useNavigate();
 
   const handleCopy2 = (textToCopy) => {
     navigator.clipboard
@@ -42,6 +43,12 @@ const BankPayment = () => {
       .catch((err) => {
         console.log("Gagal", err);
       });
+  };
+
+  const handleBackPage = () => {
+    navigate(`/payment/${id}`);
+    localStorage.removeItem("countdown");
+    localStorage.removeItem("countdownMinute");
   };
 
   switch (bank) {
@@ -87,8 +94,14 @@ const BankPayment = () => {
                 <i
                   className="bi bi-arrow-left"
                   style={{ cursor: "pointer" }}
+                  onClick={handleBackPage}
                 ></i>
-                <p>Pembayaran</p>
+                <div>
+                  <p style={{ margin: "0px" }}> Pembayaran</p>
+                  <span style={{ fontSize: "13px" }}>
+                    Order ID : {order_id}
+                  </span>
+                </div>
               </div>
               <div className="steps">
                 <div className="step">
@@ -166,7 +179,7 @@ const BankPayment = () => {
                     <h4 className="text-rekt">Total Bayar</h4>
                     <div className="total-payment">
                       <div className="price-to-pay" ref={textRef2}>
-                        <ConvertRupiah value={totalHarga} />
+                        Rp {total_price.toLocaleString()}
                       </div>
 
                       <button
@@ -279,7 +292,7 @@ const BankPayment = () => {
 
             <Col xl="5" md="5" sm="12">
               <div className="confirm-payment-container">
-                {confirm == false ? (
+                {confirm === false ? (
                   <div>
                     <h5>
                       Klik konfirmasi pembayaran untuk mempercepat proses
@@ -294,9 +307,7 @@ const BankPayment = () => {
                     </Button>
                   </div>
                 ) : (
-                  <>
-                    <ConfirmUpload />
-                  </>
+                  <ConfirmUpload />
                 )}
               </div>
             </Col>

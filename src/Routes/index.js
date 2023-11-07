@@ -130,7 +130,7 @@ const routes = [
     ],
   },
   {
-    path: "payment",
+    path: "payment/:id",
     element: <Header />,
     children: [
       {
