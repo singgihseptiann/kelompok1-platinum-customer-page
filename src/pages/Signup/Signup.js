@@ -47,43 +47,53 @@ const SignupPage = () => {
   };
 
   return (
-    <Container fluid>
-      <Row>
-        <Col className="d-flex flex-column justify-content-center">
-          <div className="mb-4" style={{ height: "34px", width: "80px", backgroundColor: "#CFD4ED" }}></div>
-          <h3 className="mb-4" style={{ fontWeight: "bold" }}>
-            Sign Up
-          </h3>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicPassword" className="mb-4">
-              <Form.Label>Name*</Form.Label>
-              <Form.Control type="text" placeholder="Nama Lengkap" name="fullName" value={form.fullName} onChange={handleChange} />
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail" className="mb-4">
-              <Form.Label>Email*</Form.Label>
-              <Form.Control type="email" placeholder="Contoh: fandhy@gmail.com" name="emailAddress" value={form.emailAddress} onChange={handleChange} />
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword" className="mb-4">
-              <Form.Label>Password*</Form.Label>
-              <Form.Control type="password" placeholder="Password" name="password" value={form.password} onChange={handleChange} />
-            </Form.Group>
-            <Button variant="primary" type="submit" className="w-100" disabled={load}>
-              {load ? "Sedang Mendaftar..." : "Daftar"}
-            </Button>
-          </Form>
+    <main>
+      <section>
+        <Container fluid>
+          <Row>
+            <Col className="d-flex flex-column justify-content-center">
+              <div className="mb-4" style={{ height: "34px", width: "80px", backgroundColor: "#CFD4ED" }}></div>
+              <h3 className="mb-4" style={{ fontWeight: "bold" }}>
+                Sign Up
+              </h3>
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="formBasicPassword" className="mb-4">
+                  <Form.Label as="label" htmlFor="fullName">
+                    Name*
+                  </Form.Label>
+                  <Form.Control type="text" placeholder="Nama Lengkap" name="fullName" value={form.fullName} onChange={handleChange} />
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail" className="mb-4">
+                  <Form.Label as="label" htmlFor="emailAddress">
+                    Email*
+                  </Form.Label>
+                  <Form.Control type="email" placeholder="Contoh: fandhy@gmail.com" name="emailAddress" value={form.emailAddress} onChange={handleChange} />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword" className="mb-4">
+                  <Form.Label as="label" htmlFor="password">
+                    Password*
+                  </Form.Label>
+                  <Form.Control type="password" placeholder="Password" name="password" value={form.password} onChange={handleChange} />
+                </Form.Group>
+                <Button variant="primary" type="submit" className="w-100" disabled={load}>
+                  {load ? "Sedang Mendaftar..." : "Daftar"}
+                </Button>
+              </Form>
 
-          {success && <p className="text-success mt-3">{success}</p>}
-          {error && <p className="text-danger mt-3">{error}</p>}
+              {success && <p className="text-success mt-3">{success}</p>}
+              {error && <p className="text-danger mt-3">{error}</p>}
 
-          <p className="text-center mt-4">
-            Sudah punya akun? <Link to="/login">Login di sini </Link>
-          </p>
-        </Col>
-        <Col className="d-none d-md-block">
-          <img src={`${process.env.PUBLIC_URL}/images/login.png`} alt="Login" className="login-img img-fluid" />
-        </Col>
-      </Row>
-    </Container>
+              <p className="text-center mt-4">
+                Already have an account? <Link to="/login">Login here </Link>
+              </p>
+            </Col>
+            <Col className="d-none d-md-block">
+              <img src={`${process.env.PUBLIC_URL}/images/login.png`} alt="Login" className="login-img img-fluid" />
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </main>
   );
 };
 
