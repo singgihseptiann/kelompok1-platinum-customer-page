@@ -4,7 +4,7 @@ import updown from "../../assets/images/updown.svg";
 import "./payment.css";
 import { useState } from "react";
 import moment from "moment/moment";
-import { style } from "@mui/system";
+
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { useEffect } from "react";
@@ -70,8 +70,7 @@ function Payment() {
   };
 
   const handlePayment = async () => {
-    const apiCustomer =
-      "https://api-car-rental.binaracademy.org/customer/order";
+    const apiCustomer = "https://api-car-rental.binaracademy.org/customer/order";
     const id_car = localStorage.getItem("id_car");
 
     const sendCustomer = {
@@ -87,11 +86,7 @@ function Payment() {
     };
 
     try {
-      const responses = await axios.post(
-        apiCustomer,
-        sendCustomer,
-        configCustomer
-      );
+      const responses = await axios.post(apiCustomer, sendCustomer, configCustomer);
       console.log(responses);
       console.log(responses.data.id);
       localStorage.setItem("order_id", responses.data.id);
@@ -117,10 +112,7 @@ function Payment() {
           </div>
           <div className="steps">
             <div className="step">
-              <div
-                className="eclips-step"
-                style={{ backgroundColor: "blue", color: "white" }}
-              >
+              <div className="eclips-step" style={{ backgroundColor: "blue", color: "white" }}>
                 1
               </div>
               <p>Pilih Metode</p>
@@ -143,29 +135,19 @@ function Payment() {
           <div>
             <div>
               <p className="detail-header">Nama/Tipe Mobil</p>
-              <p className="detail-">
-                {data != null && data.length ? data.name : "Innova"}
-              </p>
+              <p className="detail-">{data != null && data.length ? data.name : "Innova"}</p>
             </div>
             <div>
               <p className="detail-header">Kategori</p>
-              <p className="detail-">
-                {data.length && data != null
-                  ? handleCategory(data.category)
-                  : "6-8 orang"}
-              </p>
+              <p className="detail-">{data.length && data != null ? handleCategory(data.category) : "6-8 orang"}</p>
             </div>
             <div>
               <p className="detail-header">Tanggal Mulai Sewa</p>
-              <p className="detail-">
-                {start != null && start.length ? start : "2 Juni 2022"}
-              </p>
+              <p className="detail-">{start != null && start.length ? start : "2 Juni 2022"}</p>
             </div>
             <div>
               <p className="detail-header">Tanggal Akhir Sewa</p>
-              <p className="detail-">
-                {end != null && end.length ? end : "8 Juni 2022"}
-              </p>
+              <p className="detail-">{end != null && end.length ? end : "8 Juni 2022"}</p>
             </div>
           </div>
         </div>
@@ -173,10 +155,7 @@ function Payment() {
         <div className="pembayaran-wrapper">
           <div className="pilihan-bank-container">
             <h6>Pilih Bank Transfer</h6>
-            <p>
-              Kamu bisa membayar dengan transfer melalui ATM, Internet Banking
-              atau Mobile Banking
-            </p>
+            <p>Kamu bisa membayar dengan transfer melalui ATM, Internet Banking atau Mobile Banking</p>
             <div>
               <ul style={{ listStyle: "none" }}>
                 <li
@@ -206,9 +185,7 @@ function Payment() {
                   <div className="bank-wrapper">
                     <div className="bank-container">BNI</div>
                     <h5 className="bank-box">BNI Transfer</h5>
-                    <div className="endpoint-icon">
-                      {selected === 2 ? <img src={check} /> : null}
-                    </div>
+                    <div className="endpoint-icon">{selected === 2 ? <img src={check} /> : null}</div>
                   </div>
                 </li>
                 <li
@@ -220,9 +197,7 @@ function Payment() {
                   <div className="bank-wrapper">
                     <div className="bank-container">Mandiri</div>
                     <h5 className="bank-box">Mandiri Transfer</h5>
-                    <div className="endpoint-icon">
-                      {selected === 3 ? <img src={check} /> : null}
-                    </div>
+                    <div className="endpoint-icon">{selected === 3 ? <img src={check} /> : null}</div>
                   </div>
                 </li>
               </ul>
@@ -258,9 +233,7 @@ function Payment() {
                   <ul>
                     <li>
                       <div className="list-flex">
-                        <p className="detail-thin">
-                          Sewa Mobil Rp.500.000 x 7 Hari
-                        </p>
+                        <p className="detail-thin">Sewa Mobil Rp.500.000 x 7 Hari</p>
                         <p className="detail-thin">Rp 3.500.000</p>
                       </div>
                     </li>
