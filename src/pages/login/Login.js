@@ -30,10 +30,22 @@ const LoginPage = () => {
 
       if (res.status === 201) {
         setSuccess("Login Successfully");
-        setTimeout(() => {
-          navigate("/home");
-          setSuccess("");
-        }, 1500);
+        const redirectPath = localStorage.getItem("redirectPath");
+        if (redirectPath) {
+          // Arahkan pengguna kembali ke lokasi sebelumnya
+          localStorage.removeItem("redirectPath"); // Hapus nilai redirectPath setelah digunakan
+          setTimeout(() => {
+            navigate(redirectPath);
+            setSuccess("");
+          }, 1500);
+        } else {
+          // Jika tidak ada redirectPath, arahkan pengguna ke halaman beranda atau halaman default setelah login
+          setTimeout(() => {
+            navigate("/home");
+            setSuccess("");
+          }, 1500);
+          // Ganti dengan rute halaman beranda atau halaman default
+        }
         dispatch(registerAuth(res.data));
         localStorage.removeItem("email");
         localStorage.removeItem("role");
@@ -56,7 +68,6 @@ const LoginPage = () => {
   };
 
   return (
-<<<<<<< HEAD
     <main>
       <section>
         <Container fluid>
@@ -76,20 +87,42 @@ const LoginPage = () => {
                 </h3>
                 <div>
                   <Form onSubmit={handleSubmit} method="post" className="">
-                    <Form.Group controlId="email" className="mb-4">
+                    {/* controlId="email" */}
+                    <Form.Group className="mb-4">
                       <Form.Label as="label" htmlFor="email">
                         Email
                       </Form.Label>
-                      <Form.Control type="email" placeholder="Example: johndee@gmail.com" name="email" value={form.email} onChange={handleChange} />
+                      <Form.Control
+                        type="email"
+                        placeholder="Example: johndee@gmail.com"
+                        name="email"
+                        value={form.email}
+                        onChange={handleChange}
+                      />
                     </Form.Group>
-                    <Form.Group controlId="password" className="mb-4">
+                    {/* controlId="password" */}
+                    <Form.Group className="mb-4">
                       <Form.Label as="label" htmlFor="password">
                         Password
                       </Form.Label>
-                      <Form.Control type={showPassword ? "text" : "password"} placeholder="6+ characters" name="password" value={form.password} onChange={handleChange} />
+                      <Form.Control
+                        type={showPassword ? "text" : "password"}
+                        placeholder="6+ characters"
+                        name="password"
+                        value={form.password}
+                        onChange={handleChange}
+                      />
                       <div className="d-flex flex-row justify-space-between align-items-center">
-                        <Button variant="link" className="password-toggle" onClick={togglePasswordVisibility}>
-                          {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                        <Button
+                          variant="link"
+                          className="password-toggle"
+                          onClick={togglePasswordVisibility}
+                        >
+                          {showPassword ? (
+                            <AiFillEyeInvisible />
+                          ) : (
+                            <AiFillEye />
+                          )}
                         </Button>
                         <div>Show Password</div>
                       </div>
@@ -102,89 +135,22 @@ const LoginPage = () => {
                 {success && <p className="text-success">{success}</p>}
                 {error && <p className="text-danger">{error}</p>}
                 <p className="text-center mt-4">
-                  Don’t have an account? <Link to="/signup">Sign Up For Free</Link>
+                  Don’t have an account?{" "}
+                  <Link to="/signup">Sign Up For Free</Link>
                 </p>
               </div>
             </Col>
             <Col className="col-md-6 d-none d-md-block">
-              <img src={`${process.env.PUBLIC_URL}/images/login.png`} alt="Login" className="login-img img-fluid" />
+              <img
+                src={`${process.env.PUBLIC_URL}/images/login.png`}
+                alt="Login"
+                className="login-img img-fluid"
+              />
             </Col>
           </Row>
         </Container>
       </section>
     </main>
-=======
-    <Container fluid>
-      <Row>
-        <Col className="col-md-6 d-flex flex-column justify-content-center">
-          <div className="mx-auto">
-            <div
-              className="mb-4 "
-              style={{
-                height: "34px",
-                width: "80px",
-                backgroundColor: "#CFD4ED",
-              }}
-            ></div>
-            <h3 className="mb-4" style={{ fontWeight: "bold" }}>
-              Welcome Back!
-            </h3>
-            <div>
-              <Form onSubmit={handleSubmit} method="post" className="">
-                <Form.Group controlId="email" className="mb-4">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="Example: johndee@gmail.com"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="password" className="mb-4">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type={showPassword ? "text" : "password"}
-                    placeholder="6+ characters"
-                    name="password"
-                    value={form.password}
-                    onChange={handleChange}
-                  />
-                  <div className="d-flex flex-row justify-space-between align-items-center">
-                    <Button
-                      variant="link"
-                      className="password-toggle"
-                      onClick={togglePasswordVisibility}
-                    >
-                      {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-                    </Button>
-                    <div>Show Password</div>
-                  </div>
-                </Form.Group>
-
-                <Button variant="primary" type="submit" className="w-100">
-                  Sign In
-                </Button>
-              </Form>
-            </div>
-            {success && <p className="text-success">{success}</p>}
-            {error && <p className="text-danger">{error}</p>}
-            <p className="text-center mt-4">
-              Don’t have an account? <Link to="/signup">Sign Up For Free</Link>
-            </p>
-          </div>
-        </Col>
-        <Col className="col-md-6 d-none d-md-block">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/login.png`}
-            alt="Login"
-            className="login-img img-fluid"
-          />
-        </Col>
-      </Row>
-    </Container>
->>>>>>> f6b3c1eadc5521b4d77e1641c1c0deab798b71cb
   );
 };
 

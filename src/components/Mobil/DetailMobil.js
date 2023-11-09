@@ -92,6 +92,7 @@ const DetailMobil = () => {
         setButtonShow(true);
       } else {
         alert("Anda belum Login : Anda Akan diarahkan ke Halaman Login");
+        localStorage.setItem("redirectPath", window.location.pathname);
         setTimeout(() => {
           navigate("/login");
         }, 1000);
