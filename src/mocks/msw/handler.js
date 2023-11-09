@@ -2,7 +2,7 @@ import { rest } from "msw";
 
 const baseUrl = "https://api-car-rental.binaracademy.org";
 
-export const handler = [
+export const handlers = [
   rest.post(`${baseUrl}/customer/auth/login`, async (req, res, ctx) => {
     const { email } = await req.json();
     if (email === "customer@bcr.io") {

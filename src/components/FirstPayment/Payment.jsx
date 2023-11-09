@@ -4,10 +4,6 @@ import updown from "../../assets/images/updown.svg";
 import "./payment.css";
 import { useState } from "react";
 import moment from "moment/moment";
-<<<<<<< HEAD
-
-=======
->>>>>>> f6b3c1eadc5521b4d77e1641c1c0deab798b71cb
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { useEffect } from "react";
@@ -102,19 +98,9 @@ function Payment() {
     };
 
     try {
-<<<<<<< HEAD
       const responses = await axios.post(apiCustomer, sendCustomer, configCustomer);
-      console.log(responses);
-      console.log(responses.data.id);
-=======
-      const responses = await axios.post(
-        apiCustomer,
-        sendCustomer,
-        configCustomer
-      );
       // console.log(responses);
       // console.log(responses.data.id);
->>>>>>> f6b3c1eadc5521b4d77e1641c1c0deab798b71cb
       localStorage.setItem("order_id", responses.data.id);
       localStorage.setItem("total_harga", total_price);
       navigate("/second-payment");
@@ -133,11 +119,7 @@ function Payment() {
         <div className="payment-header-container">
           <div className="payment-header">
             {/* <Link to={-1}> */}
-            <i
-              onClick={handleBackPage}
-              className="bi bi-arrow-left"
-              style={{ cursor: "pointer" }}
-            ></i>
+            <i onClick={handleBackPage} className="bi bi-arrow-left" style={{ cursor: "pointer" }}></i>
             {/* </Link> */}
             <p>Pembayaran</p>
           </div>
@@ -162,89 +144,6 @@ function Payment() {
           </div>
         </div>
 
-<<<<<<< HEAD
-        <div className="payment-detail">
-          <p>Detail Pesananmu</p>
-          <div>
-            <div>
-              <p className="detail-header">Nama/Tipe Mobil</p>
-              <p className="detail-">{data != null && data.length ? data.name : "Innova"}</p>
-            </div>
-            <div>
-              <p className="detail-header">Kategori</p>
-              <p className="detail-">{data.length && data != null ? handleCategory(data.category) : "6-8 orang"}</p>
-            </div>
-            <div>
-              <p className="detail-header">Tanggal Mulai Sewa</p>
-              <p className="detail-">{start != null && start.length ? start : "2 Juni 2022"}</p>
-            </div>
-            <div>
-              <p className="detail-header">Tanggal Akhir Sewa</p>
-              <p className="detail-">{end != null && end.length ? end : "8 Juni 2022"}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="pembayaran-wrapper">
-          <div className="pilihan-bank-container">
-            <h6>Pilih Bank Transfer</h6>
-            <p>Kamu bisa membayar dengan transfer melalui ATM, Internet Banking atau Mobile Banking</p>
-            <div>
-              <ul style={{ listStyle: "none" }}>
-                <li
-                  onClick={() => {
-                    selectClick(1);
-                    localStorage.setItem("bank", "BCA");
-                  }}
-                >
-                  <div className="bank-wrapper">
-                    <div className="bank-container">BCA</div>
-                    <div className="bank-box">
-                      <h5>BCA Transfer</h5>
-                    </div>
-                    {selected === 1 ? (
-                      <div className="endpoint-icon">
-                        <img src={check} />{" "}
-                      </div>
-                    ) : null}
-                  </div>
-                </li>
-                <li
-                  onClick={() => {
-                    selectClick(2);
-                    localStorage.setItem("bank", "BNI");
-                  }}
-                >
-                  <div className="bank-wrapper">
-                    <div className="bank-container">BNI</div>
-                    <h5 className="bank-box">BNI Transfer</h5>
-                    <div className="endpoint-icon">{selected === 2 ? <img src={check} /> : null}</div>
-                  </div>
-                </li>
-                <li
-                  onClick={() => {
-                    selectClick(3);
-                    localStorage.setItem("bank", "Mandiri");
-                  }}
-                >
-                  <div className="bank-wrapper">
-                    <div className="bank-container">Mandiri</div>
-                    <h5 className="bank-box">Mandiri Transfer</h5>
-                    <div className="endpoint-icon">{selected === 3 ? <img src={check} /> : null}</div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="detail-container">
-            <p className="detail-bold">Innova</p>
-            <div className="detail-kapasitas">
-              <i class="bi bi-people"></i>
-              <p>6 - 8 orang</p>
-            </div>
-            <div className="total-container">
-=======
         {isLoading ? (
           <>
             <div className="text-center mt-5">
@@ -257,7 +156,6 @@ function Payment() {
           <>
             <div className="payment-detail">
               <p>Detail Pesananmu</p>
->>>>>>> f6b3c1eadc5521b4d77e1641c1c0deab798b71cb
               <div>
                 <div>
                   <p className="detail-header">Nama/Tipe Mobil</p>
@@ -269,54 +167,19 @@ function Payment() {
                 </div>
                 <div>
                   <p className="detail-header">Tanggal Mulai Sewa</p>
-                  <p className="detail-">
-                    {start != null && start.length ? start_rent : "-"}
-                  </p>
+                  <p className="detail-">{start != null && start.length ? start_rent : "-"}</p>
                 </div>
                 <div>
                   <p className="detail-header">Tanggal Akhir Sewa</p>
-                  <p className="detail-">
-                    {end != null && end.length ? end_rent : "-"}
-                  </p>
+                  <p className="detail-">{end != null && end.length ? end_rent : "-"}</p>
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-            {isToggle ? (
-              <>
-                <div className="detail-pembelian-container">
-                  <p className="detail-bold">Harga</p>
-                  <ul>
-                    <li>
-                      <div className="list-flex">
-                        <p className="detail-thin">Sewa Mobil Rp.500.000 x 7 Hari</p>
-                        <p className="detail-thin">Rp 3.500.000</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div className="detail-pembelian-container">
-                  <p className="detail-bold">Biaya Lainnya</p>
-                  <ul>
-                    <li>
-                      <div className="list-flex">
-                        <p className="detail-thin">Pajak</p>
-                        <p className="termasuk">Termasuk</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="list-flex">
-                        <p className="detail-thin">Biaya Makan Supir</p>
-                        <p className="termasuk">Termasuk</p>
-=======
 
             <div className="pembayaran-wrapper">
               <div className="pilihan-bank-container">
                 <h6>Pilih Bank Transfer</h6>
-                <p>
-                  Kamu bisa membayar dengan transfer melalui ATM, Internet
-                  Banking atau Mobile Banking
-                </p>
+                <p>Kamu bisa membayar dengan transfer melalui ATM, Internet Banking atau Mobile Banking</p>
                 <div>
                   <ul style={{ listStyle: "none" }}>
                     <li
@@ -335,7 +198,6 @@ function Payment() {
                             <img alt="cheklist" src={check} />{" "}
                           </div>
                         ) : null}
->>>>>>> f6b3c1eadc5521b4d77e1641c1c0deab798b71cb
                       </div>
                     </li>
                     <li
@@ -347,11 +209,7 @@ function Payment() {
                       <div className="bank-wrapper">
                         <div className="bank-container">BNI</div>
                         <h5 className="bank-box">BNI Transfer</h5>
-                        <div className="endpoint-icon">
-                          {selected === 2 ? (
-                            <img alt="cheklist" src={check} />
-                          ) : null}
-                        </div>
+                        <div className="endpoint-icon">{selected === 2 ? <img alt="cheklist" src={check} /> : null}</div>
                       </div>
                     </li>
                     <li
@@ -363,11 +221,7 @@ function Payment() {
                       <div className="bank-wrapper">
                         <div className="bank-container">Mandiri</div>
                         <h5 className="bank-box">Mandiri Transfer</h5>
-                        <div className="endpoint-icon">
-                          {selected === 3 ? (
-                            <img alt="checklist" src={check} />
-                          ) : null}
-                        </div>
+                        <div className="endpoint-icon">{selected === 3 ? <img alt="checklist" src={check} /> : null}</div>
                       </div>
                     </li>
                   </ul>
@@ -394,9 +248,7 @@ function Payment() {
                       }}
                     />
                   </div>
-                  <p className="detail-bold">
-                    Rp {total_price.toLocaleString()}
-                  </p>
+                  <p className="detail-bold">Rp {total_price.toLocaleString()}</p>
                 </div>
                 {isToggle ? (
                   <>
@@ -406,12 +258,9 @@ function Payment() {
                         <li>
                           <div className="list-flex">
                             <p className="detail-thin">
-                              Sewa Mobil Rp.{start_price.toLocaleString()} x{" "}
-                              {day_total_rent} Hari
+                              Sewa Mobil Rp.{start_price.toLocaleString()} x {day_total_rent} Hari
                             </p>
-                            <p className="detail-thin">
-                              Rp.{total_price.toLocaleString()}
-                            </p>
+                            <p className="detail-thin">Rp.{total_price.toLocaleString()}</p>
                           </div>
                         </li>
                       </ul>
@@ -453,17 +302,9 @@ function Payment() {
                 <div className="detail-border-bottom"></div>
                 <div className="total-akhir-container">
                   <p className="detail-bold">Harga</p>
-                  <p className="detail-bold">
-                    Rp {total_price.toLocaleString()}
-                  </p>
+                  <p className="detail-bold">Rp {total_price.toLocaleString()}</p>
                 </div>
-                {selected !== null && selected !== undefined ? (
-                  <button onClick={handlePayment}>Bayar</button>
-                ) : (
-                  <button onClick={() => alert("Silahkan pilih Bank Transfer")}>
-                    Bayar
-                  </button>
-                )}
+                {selected !== null && selected !== undefined ? <button onClick={handlePayment}>Bayar</button> : <button onClick={() => alert("Silahkan pilih Bank Transfer")}>Bayar</button>}
                 {/* <button onClick={handlePayment}>Bayar</button> */}
               </div>
             </div>
