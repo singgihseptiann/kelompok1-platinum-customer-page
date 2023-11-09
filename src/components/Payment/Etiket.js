@@ -37,9 +37,10 @@ function Etiket() {
   };
 
   return (
-    <div style={{ marginTop: '-100px' }}>
-      <HeaderStepper active={2} orderID={orderId} /> {/* Menggunakan nilai yang sesuai untuk properti 'active' */}
-      <div className="text-center" style={{ marginTop: '50px' }}>
+    <div style={{ marginTop: "-100px" }}>
+      <HeaderStepper active={2} orderID={orderId} />{" "}
+      {/* Menggunakan nilai yang sesuai untuk properti 'active' */}
+      <div className="text-center" style={{ marginTop: "50px" }}>
         <img src={icon_success} alt="success" />
         <br />
         <br />
@@ -48,24 +49,30 @@ function Etiket() {
 
         <Card style={{ width: "50%", margin: "auto" }}>
           <CardBody>
-            <Container style={{ display: "flex", justifyContent: "space-between" }}>
+            <Container
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
               <div>
                 <h3>Invoice</h3>
                 <p>{order?.invoiceNumber}</p>
               </div>
               <div>
                 <a href={order?.slip} download="Slip.pdf">
-                  <img 
-                  src={button_download} 
-                  alt="Download" 
-                  title="Download Slip"
-                  style={{ cursor: 'pointer' }} />
+                  <img
+                    src={button_download}
+                    alt="Download"
+                    title="Download Slip"
+                    style={{ cursor: "pointer" }}
+                  />
                 </a>
               </div>
             </Container>
             <div>
               {order?.slip ? (
-                <Document file={order.slip} onLoadSuccess={onDocumentLoadSuccess}>
+                <Document
+                  file={order.slip}
+                  onLoadSuccess={onDocumentLoadSuccess}
+                >
                   <Page pageNumber={pageNumber} />
                 </Document>
               ) : (

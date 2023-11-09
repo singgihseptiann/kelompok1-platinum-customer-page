@@ -64,6 +64,7 @@ export const dataBank3 = [
 
 const getMethodsPayment = () => {
   const bank = localStorage.getItem("bank");
+  const order_id = localStorage.getItem("order_id");
   let methodePayment2 = [];
   return (methodePayment2 = [
     {
@@ -71,7 +72,7 @@ const getMethodsPayment = () => {
       text: [
         "Masukkan kartu ATM, lalu PIN",
         `Pilih menu “Transaksi Lainnya” – “Transfer” – “Ke Rek ${bank} Virtual Account”`,
-        "Masukkan nomor Virtual Account: 70020+Order ID",
+        `Masukkan nomor Virtual Account: 70020+${order_id}`,
         "Contoh:",
         "Order ID: 12345678, maka ditulis 7002012345678",
         "Layar ATM akan menampilkan konfirmasi, ikuti instruksi untuk menyelesaikan transaksi",
