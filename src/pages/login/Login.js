@@ -30,10 +30,22 @@ const LoginPage = () => {
 
       if (res.status === 201) {
         setSuccess("Login Successfully");
-        setTimeout(() => {
-          navigate("/home");
-          setSuccess("");
-        }, 1500);
+        const redirectPath = localStorage.getItem("redirectPath");
+        if (redirectPath) {
+          // Arahkan pengguna kembali ke lokasi sebelumnya
+          localStorage.removeItem("redirectPath"); // Hapus nilai redirectPath setelah digunakan
+          setTimeout(() => {
+            navigate(redirectPath);
+            setSuccess("");
+          }, 1500);
+        } else {
+          // Jika tidak ada redirectPath, arahkan pengguna ke halaman beranda atau halaman default setelah login
+          setTimeout(() => {
+            navigate("/home");
+            setSuccess("");
+          }, 1500);
+          // Ganti dengan rute halaman beranda atau halaman default
+        }
         dispatch(registerAuth(res.data));
         localStorage.removeItem("email");
         localStorage.removeItem("role");
@@ -75,7 +87,8 @@ const LoginPage = () => {
                 </h3>
                 <div>
                   <Form onSubmit={handleSubmit} method="post" className="">
-                    <Form.Group controlId="email" className="mb-4">
+                    {/* controlId="email" */}
+                    <Form.Group className="mb-4">
                       <Form.Label as="label" htmlFor="email">
                         Email
                       </Form.Label>
@@ -87,7 +100,8 @@ const LoginPage = () => {
                         onChange={handleChange}
                       />
                     </Form.Group>
-                    <Form.Group controlId="password" className="mb-4">
+                    {/* controlId="password" */}
+                    <Form.Group className="mb-4">
                       <Form.Label as="label" htmlFor="password">
                         Password
                       </Form.Label>

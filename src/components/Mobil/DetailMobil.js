@@ -87,7 +87,16 @@ const DetailMobil = () => {
     if (startDate && endDate) {
       console.log("Tanggal awal:", startDate);
       console.log("Tanggal akhir:", endDate);
-      setButtonShow(true);
+      const token = localStorage.getItem("token");
+      if (token !== null && token !== undefined) {
+        setButtonShow(true);
+      } else {
+        alert("Anda belum Login : Anda Akan diarahkan ke Halaman Login");
+        localStorage.setItem("redirectPath", window.location.pathname);
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      }
     } else {
       console.log("Pilih rentang tanggal terlebih dahulu.");
     }
