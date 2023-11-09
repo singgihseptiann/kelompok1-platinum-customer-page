@@ -2,15 +2,20 @@ import renderer from "react-test-renderer";
 import { describe, expect, test } from "@jest/globals";
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 
-import { rawRenderWithProviders, renderWithProviders } from "../../../mocks/redux";
+import {
+  rawRenderWithProviders,
+  renderWithProviders,
+} from "../../../mocks/redux";
 import { mockLocalStorage } from "../../../mocks/localStorage";
-import LoginPage from "../../pages/login";
+import LoginPage from "../../../pages/login/Login";
 
 describe("LoginPage Component", () => {
   const { setItemMock } = mockLocalStorage();
 
   test("Login component should match with snapshot", () => {
-    const component = renderer.create(rawRenderWithProviders(<LoginPage />)).toJSON();
+    const component = renderer
+      .create(rawRenderWithProviders(<LoginPage />))
+      .toJSON();
 
     expect(component).toMatchSnapshot();
   });
