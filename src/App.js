@@ -42,7 +42,7 @@
 import "./App.css";
 import { useRoutes } from "react-router";
 
-import { routes } from "./routes";
+import { routes } from "./Routes";
 
 const App = () => {
   return useRoutes(routes);
