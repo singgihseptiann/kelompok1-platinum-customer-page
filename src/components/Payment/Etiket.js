@@ -1,45 +1,66 @@
 import React, { useState, useEffect } from "react";
-import { Document, Page } from "react-pdf";
 import { useParams } from "react-router-dom";
 import { Card, CardBody, Container } from "reactstrap";
-import { handler } from "../../api/handler";
 import button_download from "../../assets/images/button_download.png";
 import icon_success from "../../assets/images/icon_success.png";
 import HeaderStepper from "./HeadStepper";
+import axios from "axios";
 
 function Etiket() {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(0);
-  const [order, setOrder] = useState(null);
-
-  const { orderId } = useParams();
+  const { id } = useParams();
+  const orderID = localStorage.getItem("order_id");
+  const token = localStorage.getItem("token");
+  const [order, setOrder] = useState({});
+  const [uploadedSlip, setUploadedSlip] = useState(""); // Ganti URL dengan URL gambar yang sesuai
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await handler.get(`/customer/order/${orderId}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        console.log(response);
+        const headers = {
+          access_token: token,
+        };
+        console.log(orderID);
+        const response = await axios.get(
+          `https://api-car-rental.binaracademy.org/customer/order/${orderID}`,
+          {
+            headers: headers,
+          }
+        );
+        console.log("Response from API:", response.data);
         setOrder(response.data);
+        const storedSlip = JSON.parse(localStorage.getItem("slip")); // Perbaikan disini
+        console.log("Stored slip:", storedSlip);
+        if (storedSlip) {
+          setUploadedSlip(storedSlip);
+        }
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching data:", error);
       }
     };
     fetchData();
-  }, [orderId]);
+  }, []);
 
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-    setPageNumber(0);
+  const handleDownload = async () => {
+    if (uploadedSlip) {
+      try {
+        const response = await fetch(uploadedSlip);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "slip.png"); // Menggunakan ekstensi .png untuk gambar PNG
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } catch (error) {
+        console.error("Error downloading:", error);
+      }
+    }
   };
 
   return (
     <div style={{ marginTop: "-100px" }}>
-      <HeaderStepper active={2} orderID={orderId} />{" "}
-      {/* Menggunakan nilai yang sesuai untuk properti 'active' */}
+      <HeaderStepper active={2} orderID={orderID} />
       <div className="text-center" style={{ marginTop: "50px" }}>
         <img src={icon_success} alt="success" />
         <br />
@@ -54,31 +75,22 @@ function Etiket() {
             >
               <div>
                 <h3>Invoice</h3>
-                <p>{order?.invoiceNumber}</p>
+                <p>{orderID}</p>
               </div>
               <div>
-                <a href={order?.slip} download="Slip.pdf">
+                <button onClick={handleDownload}>
                   <img
                     src={button_download}
                     alt="Download"
                     title="Download Slip"
                     style={{ cursor: "pointer" }}
                   />
-                </a>
+                </button>
               </div>
             </Container>
-            <div>
-              {order?.slip ? (
-                <Document
-                  file={order.slip}
-                  onLoadSuccess={onDocumentLoadSuccess}
-                >
-                  <Page pageNumber={pageNumber} />
-                </Document>
-              ) : (
-                <p>Slip is not available</p>
-              )}
-            </div>
+            {uploadedSlip && (
+              <img src={uploadedSlip} alt="Slip" style={{ width: "100%" }} />
+            )}
           </CardBody>
         </Card>
         <br />

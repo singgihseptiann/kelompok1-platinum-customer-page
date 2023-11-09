@@ -52,7 +52,10 @@ exports[`LoginPage Component Login component should match with snapshot 1`] = `
                   </label>
                   <input
                     className="form-control"
+<<<<<<< HEAD
                     id="email"
+=======
+>>>>>>> 4318eec4aae02999a6194bd3049cd9439cd074fd
                     name="email"
                     onChange={[Function]}
                     placeholder="Example: johndee@gmail.com"
@@ -71,7 +74,10 @@ exports[`LoginPage Component Login component should match with snapshot 1`] = `
                   </label>
                   <input
                     className="form-control"
+<<<<<<< HEAD
                     id="password"
+=======
+>>>>>>> 4318eec4aae02999a6194bd3049cd9439cd074fd
                     name="password"
                     onChange={[Function]}
                     placeholder="6+ characters"

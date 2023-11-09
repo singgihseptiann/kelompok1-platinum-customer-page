@@ -7,6 +7,7 @@ import {
   renderWithProviders,
 } from "../../../mocks/redux";
 import { mockLocalStorage } from "../../../mocks/localStorage";
+// import LoginPage from "../../pages/login";
 import LoginPage from "../../../pages/login/Login";
 
 describe("LoginPage Component", () => {
