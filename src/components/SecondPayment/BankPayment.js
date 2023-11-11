@@ -26,7 +26,6 @@ const BankPayment = () => {
   const textRef2 = useRef(null);
   const [confirm, setConfirm] = useState(false);
   const payment = getMethodsPayment();
-  // const id = localStorage.getItem("id_car");
   const order_id = localStorage.getItem("order_id");
 
   const item = payment.find((item) => item.id === 1);

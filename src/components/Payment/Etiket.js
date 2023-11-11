@@ -6,6 +6,7 @@ import icon_success from "../../assets/images/icon_success.png";
 import HeaderStepper from "./HeadStepper";
 import axios from "axios";
 import { Spinner } from "reactstrap"; // Perubahan pada impor
+import { decryptData } from "../Decrypt/helper";
 
 function Etiket() {
   const { id } = useParams();
@@ -14,12 +15,14 @@ function Etiket() {
   const [order, setOrder] = useState({});
   const [uploadedSlip, setUploadedSlip] = useState("");
   const [loading, setLoading] = useState(true);
+  const store_decrypt_token = localStorage.getItem("customer token");
+  const decryptToken = decryptData(store_decrypt_token); //Customer_token
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const headers = {
-          access_token: token,
+          access_token: decryptToken,
         };
         const response = await axios.get(
           `https://api-car-rental.binaracademy.org/customer/order/${orderID}`,
@@ -38,10 +41,13 @@ function Etiket() {
 
         if (storedSlip) {
           setUploadedSlip(storedSlip);
-
           // Menghapus local storage
           localStorage.removeItem("countdown");
           localStorage.removeItem("countdownMinute");
+          localStorage.removeItem("start_rent");
+          localStorage.removeItem("end_rent");
+          localStorage.removeItem("total_harga");
+          localStorage.removeItem("bank");
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -50,7 +56,7 @@ function Etiket() {
       }
     };
     fetchData();
-  }, [orderID, token]);
+  }, [orderID, decryptToken]);
 
   const handleDownload = () => {
     if (uploadedSlip) {
@@ -82,22 +88,22 @@ function Etiket() {
                 <p>{orderID}</p>
               </div>
               <div>
-              <button
-                onClick={handleDownload}
-                style={{
-                  background: "none",
-                  border: "none",
-                  padding: 0,
-                  cursor: "pointer",
-                }}
-              >
-                <img
-                  src={button_download}
-                  alt="Download"
-                  title="Download Slip"
-                  style={{ width: "auto", height: "auto" }}
-                />
-              </button>
+                <button
+                  onClick={handleDownload}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    cursor: "pointer",
+                  }}
+                >
+                  <img
+                    src={button_download}
+                    alt="Download"
+                    title="Download Slip"
+                    style={{ width: "auto", height: "auto" }}
+                  />
+                </button>
               </div>
             </Container>
             {loading ? (

@@ -9,7 +9,7 @@ import "animate.css/animate.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
 import "./styles/style.css";
-import { store } from "./Store";
+import { store } from "./Store/index";
 import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

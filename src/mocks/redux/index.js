@@ -5,9 +5,12 @@ import { Provider } from "react-redux";
 /**
  * import store yg sudah dibuat
  */
-import { store } from "../../store";
+import { store } from "../../Store";
 
-const renderWithProviders = (ui, { preloadedState = {}, appStore = store, ...renderOptions } = {}) => {
+const renderWithProviders = (
+  ui,
+  { preloadedState = {}, appStore = store, ...renderOptions } = {}
+) => {
   const wrapper = ({ children }) => {
     return (
       <BrowserRouter>
