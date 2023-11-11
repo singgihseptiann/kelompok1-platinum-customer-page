@@ -7,6 +7,8 @@ import "./style.css";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
+import CryptoJS from "crypto-js";
+import { encryptData, decryptData } from "../Decrypt/helper";
 
 const DetailMobil = () => {
   const { id } = useParams();
@@ -14,6 +16,10 @@ const DetailMobil = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [buttonShow, setButtonShow] = useState(false);
   const navigate = useNavigate();
+
+  const store_decrypt_token = localStorage.getItem("customer token");
+  const decryptToken = decryptData(store_decrypt_token);
+  console.log(decryptToken);
 
   useEffect(() => {
     async function fetchCarById() {
@@ -47,7 +53,10 @@ const DetailMobil = () => {
   const handleGoPayment = () => {
     localStorage.setItem("start_rent", startDate);
     localStorage.setItem("end_rent", endDate);
-    localStorage.setItem("id_car", id);
+
+    const encryptedData = encryptData(id);
+    localStorage.setItem("id_car", encryptedData);
+
     navigate(`/payment/${id}`);
   };
 

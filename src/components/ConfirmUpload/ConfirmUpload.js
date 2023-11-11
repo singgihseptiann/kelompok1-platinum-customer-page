@@ -5,12 +5,15 @@ import CountMinute from "../Countdown/CountMinute";
 import "./confirmupload.css";
 import axios from "axios";
 import { Button } from "react-bootstrap";
+import { decryptData } from "../Decrypt/helper";
 
 const ConfirmUpload = () => {
   const [image, setImage] = useState(blankimage);
   const [photo, setPhoto] = useState("");
   const [isUpload, setIsUpload] = useState(false);
   const navigate = useNavigate();
+  const store_decrypt_token = localStorage.getItem("customer token");
+  const decryptToken = decryptData(store_decrypt_token); //Customer_token
 
   const handleImage = (e) => {
     setIsUpload(true);
@@ -21,7 +24,6 @@ const ConfirmUpload = () => {
   const handleUploadPayment = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("token");
     const order_id = localStorage.getItem("order_id");
 
     const formData = new FormData();
@@ -34,7 +36,7 @@ const ConfirmUpload = () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "multipart/form-data",
-        access_token: token,
+        access_token: decryptToken,
       },
     };
 
