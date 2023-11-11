@@ -18,17 +18,17 @@ const ConfirmUpload = () => {
     setPhoto(URL.createObjectURL(e.target.files[0]));
   };
 
-  const handleUploadPayment = async () => {
+  const handleUploadPayment = async (e) => {
+    e.preventDefault();
+
     const token = localStorage.getItem("token");
     const order_id = localStorage.getItem("order_id");
 
+    const formData = new FormData();
+    formData.append("slip", image);
+
     // console.log(token);
     const api = `https://api-car-rental.binaracademy.org/customer/order/${order_id}/slip`;
-
-    const sendSlip = {
-      slip: image,
-    };
-    // console.log(image);
 
     const configUploadPayment = {
       headers: {
@@ -39,7 +39,7 @@ const ConfirmUpload = () => {
     };
 
     try {
-      const responses = await axios.put(api, sendSlip, configUploadPayment);
+      const responses = await axios.put(api, formData, configUploadPayment);
       // console.log(responses);
       navigate(`/etiket`);
     } catch (err) {
