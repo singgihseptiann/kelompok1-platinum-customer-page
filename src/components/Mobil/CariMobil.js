@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import HeroSection from "../Content/HeroSection";
 import api from "../../api";
-import { Link } from "react-router-dom";
 
 const CariMobil = () => {
   const [formValid, setFormValid] = useState(false);
@@ -57,7 +56,6 @@ const CariMobil = () => {
       setFormValid(false);
     }
   }, [formData]);
-  console.log(formData);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
