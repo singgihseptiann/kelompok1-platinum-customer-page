@@ -15,6 +15,7 @@ import ConfirmUpload from "../ConfirmUpload/ConfirmUpload";
 import getMethodsPayment from "./const.js";
 import "./bankpayment.css";
 import { useNavigate } from "react-router-dom";
+import { decryptData } from "../Decrypt/helper";
 
 const BankPayment = () => {
   let dataBank = [{}];
@@ -25,7 +26,7 @@ const BankPayment = () => {
   const textRef2 = useRef(null);
   const [confirm, setConfirm] = useState(false);
   const payment = getMethodsPayment();
-  const id = localStorage.getItem("id_car");
+  // const id = localStorage.getItem("id_car");
   const order_id = localStorage.getItem("order_id");
 
   const item = payment.find((item) => item.id === 1);
@@ -46,7 +47,9 @@ const BankPayment = () => {
   };
 
   const handleBackPage = () => {
-    navigate(`/payment/${id}`);
+    const store_decrypt = localStorage.getItem("id_car");
+    const decryptId = decryptData(store_decrypt);
+    navigate(`/payment/${decryptId}`);
     localStorage.removeItem("countdown");
     localStorage.removeItem("countdownMinute");
   };

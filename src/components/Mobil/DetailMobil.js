@@ -18,6 +18,7 @@ import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import CryptoJS from "crypto-js";
+import { encryptData } from "../Decrypt/helper";
 
 const DetailMobil = () => {
   const { id } = useParams();
@@ -58,10 +59,9 @@ const DetailMobil = () => {
   const handleGoPayment = () => {
     localStorage.setItem("start_rent", startDate);
     localStorage.setItem("end_rent", endDate);
-    // localStorage.setItem("id_car", id);
-    const secretKey = "";
-    const ciphertext = CryptoJS.AES.encrypt(id, secretKey).toString();
-    localStorage.setItem("id_car", ciphertext);
+
+    const encryptedData = encryptData(id);
+    localStorage.setItem("id_car", encryptedData);
 
     navigate(`/payment/${id}`);
   };
@@ -90,8 +90,8 @@ const DetailMobil = () => {
 
   const handlePickDate = () => {
     if (startDate && endDate) {
-      console.log("Tanggal awal:", startDate);
-      console.log("Tanggal akhir:", endDate);
+      // console.log("Tanggal awal:", startDate);
+      // console.log("Tanggal akhir:", endDate);
       const token = localStorage.getItem("token");
       if (token !== null && token !== undefined) {
         setButtonShow(true);
