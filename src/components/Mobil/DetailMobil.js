@@ -60,14 +60,9 @@ const DetailMobil = () => {
     localStorage.setItem("end_rent", endDate);
     // localStorage.setItem("id_car", id);
     const secretKey = "";
-    const originalID = id;
+    const ciphertext = CryptoJS.AES.encrypt(id, secretKey).toString();
+    localStorage.setItem("id_car", ciphertext);
 
-    const encryptToken = (idCar) => {
-      const ciphertext = CryptoJS.AES.encrypt(idCar, secretKey).toString();
-      localStorage.setItem("id_car", ciphertext);
-    };
-
-    encryptToken(originalID);
     navigate(`/payment/${id}`);
   };
 
