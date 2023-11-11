@@ -17,6 +17,7 @@ import "./style.css";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
+import CryptoJS from "crypto-js";
 
 const DetailMobil = () => {
   const { id } = useParams();
@@ -57,7 +58,16 @@ const DetailMobil = () => {
   const handleGoPayment = () => {
     localStorage.setItem("start_rent", startDate);
     localStorage.setItem("end_rent", endDate);
-    localStorage.setItem("id_car", id);
+    // localStorage.setItem("id_car", id);
+    const secretKey = "";
+    const originalID = id;
+
+    const encryptToken = (idCar) => {
+      const ciphertext = CryptoJS.AES.encrypt(idCar, secretKey).toString();
+      localStorage.setItem("id_car", ciphertext);
+    };
+
+    encryptToken(originalID);
     navigate(`/payment/${id}`);
   };
 

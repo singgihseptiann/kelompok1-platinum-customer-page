@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import CryptoJS from "crypto-js";
 
 function Payment() {
   const [data, setData] = useState({});
@@ -82,14 +83,27 @@ function Payment() {
   };
 
   const handlePayment = async () => {
+    const secretKey = "";
+    const decryptToken = () => {
+      const ciphertext = localStorage.getItem("idCar");
+      if (ciphertext) {
+        const bytes = CryptoJS.AES.decrypt(ciphertext, secretKey);
+        const originalToken = bytes.toString(CryptoJS.enc.Utf8);
+        return originalToken;
+      }
+      return null;
+    };
+
+    const decryptedToken = decryptToken();
+
     const apiCustomer =
       "https://api-car-rental.binaracademy.org/customer/order";
-    const id_car = localStorage.getItem("id_car");
+    // const id_car = localStorage.getItem("id_car");
 
     const sendCustomer = {
       start_rent_at: start_rent2,
       finish_rent_at: end_rent2,
-      car_id: id_car,
+      car_id: decryptedToken,
     };
     const configCustomer = {
       headers: {
