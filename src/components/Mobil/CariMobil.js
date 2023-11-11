@@ -43,7 +43,6 @@ const CariMobil = () => {
     });
   };
 
-  // Tambahkan useEffect untuk memeriksa validitas form setiap kali formData berubah
   useEffect(() => {
     if (
       formData.namaMobil !== "" &&
@@ -60,7 +59,6 @@ const CariMobil = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Validasi setiap field secara terpisah
     if (
       formData.namaMobil ||
       formData.kategori ||

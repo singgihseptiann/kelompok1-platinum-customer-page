@@ -8,7 +8,7 @@ import {
   Form,
   Button,
   Card,
-} from "react-bootstrap"; // Pastikan Anda mengimpor Spinner dan komponen-komponen yang Anda gunakan dengan benar
+} from "react-bootstrap";
 import api from "../../api";
 import { Link } from "react-router-dom";
 
