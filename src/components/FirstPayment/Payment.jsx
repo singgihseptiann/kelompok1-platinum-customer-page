@@ -82,7 +82,8 @@ function Payment() {
   };
 
   const handlePayment = async () => {
-    const apiCustomer = "https://api-car-rental.binaracademy.org/customer/order";
+    const apiCustomer =
+      "https://api-car-rental.binaracademy.org/customer/order";
     const id_car = localStorage.getItem("id_car");
 
     const sendCustomer = {
@@ -98,7 +99,11 @@ function Payment() {
     };
 
     try {
-      const responses = await axios.post(apiCustomer, sendCustomer, configCustomer);
+      const responses = await axios.post(
+        apiCustomer,
+        sendCustomer,
+        configCustomer
+      );
       // console.log(responses);
       // console.log(responses.data.id);
       localStorage.setItem("order_id", responses.data.id);
@@ -119,14 +124,21 @@ function Payment() {
         <div className="payment-header-container">
           <div className="payment-header">
             {/* <Link to={-1}> */}
-            <i onClick={handleBackPage} className="bi bi-arrow-left" style={{ cursor: "pointer" }}></i>
+            <i
+              onClick={handleBackPage}
+              className="bi bi-arrow-left"
+              style={{ cursor: "pointer" }}
+            ></i>
             {/* </Link> */}
             <p>Pembayaran</p>
           </div>
 
           <div className="steps">
             <div className="step">
-              <div className="eclips-step" style={{ backgroundColor: "blue", color: "white" }}>
+              <div
+                className="eclips-step"
+                style={{ backgroundColor: "blue", color: "white" }}
+              >
                 1
               </div>
               <p>Pilih Metode</p>
@@ -167,11 +179,15 @@ function Payment() {
                 </div>
                 <div>
                   <p className="detail-header">Tanggal Mulai Sewa</p>
-                  <p className="detail-">{start != null && start.length ? start_rent : "-"}</p>
+                  <p className="detail-">
+                    {start != null && start.length ? start_rent : "-"}
+                  </p>
                 </div>
                 <div>
                   <p className="detail-header">Tanggal Akhir Sewa</p>
-                  <p className="detail-">{end != null && end.length ? end_rent : "-"}</p>
+                  <p className="detail-">
+                    {end != null && end.length ? end_rent : "-"}
+                  </p>
                 </div>
               </div>
             </div>
@@ -179,7 +195,10 @@ function Payment() {
             <div className="pembayaran-wrapper">
               <div className="pilihan-bank-container">
                 <h6>Pilih Bank Transfer</h6>
-                <p>Kamu bisa membayar dengan transfer melalui ATM, Internet Banking atau Mobile Banking</p>
+                <p>
+                  Kamu bisa membayar dengan transfer melalui ATM, Internet
+                  Banking atau Mobile Banking
+                </p>
                 <div>
                   <ul style={{ listStyle: "none" }}>
                     <li
@@ -209,7 +228,11 @@ function Payment() {
                       <div className="bank-wrapper">
                         <div className="bank-container">BNI</div>
                         <h5 className="bank-box">BNI Transfer</h5>
-                        <div className="endpoint-icon">{selected === 2 ? <img alt="cheklist" src={check} /> : null}</div>
+                        <div className="endpoint-icon">
+                          {selected === 2 ? (
+                            <img alt="cheklist" src={check} />
+                          ) : null}
+                        </div>
                       </div>
                     </li>
                     <li
@@ -221,7 +244,11 @@ function Payment() {
                       <div className="bank-wrapper">
                         <div className="bank-container">Mandiri</div>
                         <h5 className="bank-box">Mandiri Transfer</h5>
-                        <div className="endpoint-icon">{selected === 3 ? <img alt="checklist" src={check} /> : null}</div>
+                        <div className="endpoint-icon">
+                          {selected === 3 ? (
+                            <img alt="checklist" src={check} />
+                          ) : null}
+                        </div>
                       </div>
                     </li>
                   </ul>
@@ -248,7 +275,9 @@ function Payment() {
                       }}
                     />
                   </div>
-                  <p className="detail-bold">Rp {total_price.toLocaleString()}</p>
+                  <p className="detail-bold">
+                    Rp {total_price.toLocaleString()}
+                  </p>
                 </div>
                 {isToggle ? (
                   <>
@@ -258,9 +287,12 @@ function Payment() {
                         <li>
                           <div className="list-flex">
                             <p className="detail-thin">
-                              Sewa Mobil Rp.{start_price.toLocaleString()} x {day_total_rent} Hari
+                              Sewa Mobil Rp.{start_price.toLocaleString()} x{" "}
+                              {day_total_rent} Hari
                             </p>
-                            <p className="detail-thin">Rp.{total_price.toLocaleString()}</p>
+                            <p className="detail-thin">
+                              Rp.{total_price.toLocaleString()}
+                            </p>
                           </div>
                         </li>
                       </ul>
@@ -302,9 +334,17 @@ function Payment() {
                 <div className="detail-border-bottom"></div>
                 <div className="total-akhir-container">
                   <p className="detail-bold">Harga</p>
-                  <p className="detail-bold">Rp {total_price.toLocaleString()}</p>
+                  <p className="detail-bold">
+                    Rp {total_price.toLocaleString()}
+                  </p>
                 </div>
-                {selected !== null && selected !== undefined ? <button onClick={handlePayment}>Bayar</button> : <button onClick={() => alert("Silahkan pilih Bank Transfer")}>Bayar</button>}
+                {selected !== null && selected !== undefined ? (
+                  <button onClick={handlePayment}>Bayar</button>
+                ) : (
+                  <button onClick={() => alert("Silahkan pilih Bank Transfer")}>
+                    Bayar
+                  </button>
+                )}
                 {/* <button onClick={handlePayment}>Bayar</button> */}
               </div>
             </div>
