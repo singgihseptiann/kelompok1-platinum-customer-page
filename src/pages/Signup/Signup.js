@@ -21,7 +21,7 @@ const SignupPage = () => {
       });
 
       if (res.status === 201) {
-        setSuccess("Registration Successfully. You will be directed to login Page. Please login using your account");
+        setSuccess("Registration Successfully. You will be directed to the login page. Please login using your account");
         setTimeout(() => {
           navigate("/login");
           setSuccess("");
@@ -57,22 +57,16 @@ const SignupPage = () => {
                 Sign Up
               </h3>
               <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="formBasicPassword" className="mb-4">
-                  <Form.Label as="label" htmlFor="fullName">
-                    Name*
-                  </Form.Label>
+                <Form.Group className="mb-4">
+                  <Form.Label htmlFor="fullName">Name*</Form.Label>
                   <Form.Control type="text" placeholder="Nama Lengkap" name="fullName" value={form.fullName} onChange={handleChange} />
                 </Form.Group>
-                <Form.Group controlId="formBasicEmail" className="mb-4">
-                  <Form.Label as="label" htmlFor="emailAddress">
-                    Email*
-                  </Form.Label>
+                <Form.Group className="mb-4">
+                  <Form.Label htmlFor="emailAddress">Email*</Form.Label>
                   <Form.Control type="email" placeholder="Contoh: fandhy@gmail.com" name="emailAddress" value={form.emailAddress} onChange={handleChange} />
                 </Form.Group>
-                <Form.Group controlId="formBasicPassword" className="mb-4">
-                  <Form.Label as="label" htmlFor="password">
-                    Password*
-                  </Form.Label>
+                <Form.Group className="mb-4">
+                  <Form.Label htmlFor="password">Password*</Form.Label>
                   <Form.Control type="password" placeholder="Password" name="password" value={form.password} onChange={handleChange} />
                 </Form.Group>
                 <Button variant="primary" type="submit" className="w-100" disabled={load}>
@@ -84,7 +78,7 @@ const SignupPage = () => {
               {error && <p className="text-danger mt-3">{error}</p>}
 
               <p className="text-center mt-4">
-                Already have an account? <Link to="/login">Login here </Link>
+                Already have an account? <Link to="/login">Login here</Link>
               </p>
             </Col>
             <Col className="d-none d-md-block">

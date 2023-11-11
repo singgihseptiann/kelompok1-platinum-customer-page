@@ -4,20 +4,23 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link, useNavigate } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+// import { registerAuth } from "../../src/store/auth";
+import { useDispatch } from "react-redux";
 
 function NavigationBar() {
   const expand = "md";
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("customer token");
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
       navigate("/home");
-      localStorage.removeItem("token");
+      localStorage.removeItem("customer token");
     }, 1000);
   };
 
@@ -37,15 +40,9 @@ function NavigationBar() {
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-          <Navbar.Offcanvas
-            id={`offcanvasNavbar-expand-${expand}`}
-            aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-            placement="end"
-          >
+          <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                BCR
-              </Offcanvas.Title>
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>BCR</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
@@ -66,12 +63,7 @@ function NavigationBar() {
                 <>
                   {" "}
                   {/* Use Link to navigate */}
-                  <button
-                    type="button"
-                    className="btn text-white btn-mobile"
-                    style={{ backgroundColor: "#5CB85F" }}
-                    onClick={handleLogout}
-                  >
+                  <button type="button" className="btn text-white btn-mobile" style={{ backgroundColor: "#5CB85F" }} onClick={handleLogout}>
                     {isLoading ? (
                       <>
                         <Spinner animation="border" size="sm" role="status">
@@ -91,11 +83,7 @@ function NavigationBar() {
                   <Link to="/signup">
                     {" "}
                     {/* Use Link to navigate */}
-                    <button
-                      type="button"
-                      className="btn text-white btn-mobile"
-                      style={{ backgroundColor: "#5CB85F" }}
-                    >
+                    <button type="button" className="btn text-white btn-mobile" style={{ backgroundColor: "#5CB85F" }}>
                       Register
                     </button>
                   </Link>

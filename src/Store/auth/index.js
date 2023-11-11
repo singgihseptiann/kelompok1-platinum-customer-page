@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import CryptoJS from "crypto-js";
 
 const initialState = {
-  email: localStorage.getItem("email") ? localStorage.getItem("email") : "",
-  role: localStorage.getItem("role") ? localStorage.getItem("role") : "",
-  token: localStorage.getItem("token") ? localStorage.getItem("token") : "",
+  email: localStorage.getItem("email") || "",
+  role: localStorage.getItem("role") || "",
+  token: localStorage.getItem("token") || "",
 };
 
 const auth = createSlice({
@@ -11,15 +12,24 @@ const auth = createSlice({
   initialState,
   reducers: {
     registerAuth: (state, action) => {
-      state.token = action.payload.access_token;
+      // Fetch the encryption key securely from the server or use a secure mechanism
+      const encryptionKey = "your-secret-key";
+
+      // Encrypt the token before storing it in local storage
+      const encryptedToken = CryptoJS.AES.encrypt(action.payload.access_token, encryptionKey).toString();
+
+      state.token = encryptedToken;
       state.email = action.payload.email;
       state.role = action.payload.role;
-      localStorage.setItem("token", action.payload.access_token);
+
+      localStorage.setItem("customer token", encryptedToken);
       localStorage.setItem("email", action.payload.email);
       localStorage.setItem("role", action.payload.role);
     },
 
-    remakeToken: (state, action) => {},
+    remakeToken: (state, action) => {
+      // Handle remakeToken if needed
+    },
   },
 });
 
