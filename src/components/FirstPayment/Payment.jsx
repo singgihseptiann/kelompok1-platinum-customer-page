@@ -8,6 +8,8 @@ import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import CryptoJS from "crypto-js";
+import { decryptData } from "../Decrypt/helper";
 
 function Payment() {
   const [data, setData] = useState({});
@@ -40,6 +42,12 @@ function Payment() {
   const start_price = parseInt(data.price); //mengubah nilai string menjadi INT
   const total_price = start_price * day_total_rent;
 
+  const store_decrypt_token = localStorage.getItem("customer token");
+  const decryptToken = decryptData(store_decrypt_token); //Customer_token
+
+  const store_decrypt = localStorage.getItem("id_car");
+  const decryptId = decryptData(store_decrypt); //car_id
+
   const handleCategory = (e) => {
     switch (e) {
       case "small":
@@ -59,14 +67,13 @@ function Payment() {
     const configData = {
       headers: {
         "Content-Type": "application/json",
-        access_token: token,
+        access_token: decryptToken,
       },
     };
 
     axios
       .get(api, configData)
       .then((res) => {
-        // console.log(res);
         setData(res.data);
         setTimeout(() => {
           setIsLoading(false);
@@ -84,17 +91,16 @@ function Payment() {
   const handlePayment = async () => {
     const apiCustomer =
       "https://api-car-rental.binaracademy.org/customer/order";
-    const id_car = localStorage.getItem("id_car");
 
     const sendCustomer = {
       start_rent_at: start_rent2,
       finish_rent_at: end_rent2,
-      car_id: id_car,
+      car_id: decryptId,
     };
     const configCustomer = {
       headers: {
         "Content-Type": "application/json",
-        access_token: token,
+        access_token: decryptToken,
       },
     };
 
@@ -104,8 +110,6 @@ function Payment() {
         sendCustomer,
         configCustomer
       );
-      // console.log(responses);
-      // console.log(responses.data.id);
       localStorage.setItem("order_id", responses.data.id);
       localStorage.setItem("total_harga", total_price);
       navigate("/second-payment");
