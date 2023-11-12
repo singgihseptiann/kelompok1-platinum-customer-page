@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import HeroSection from "../Content/HeroSection";
 import api from "../../api";
-import { Link } from "react-router-dom";
 
 const CariMobil = () => {
   const [formValid, setFormValid] = useState(false);
@@ -12,8 +11,6 @@ const CariMobil = () => {
   const login = async () => {
     try {
       const carResponse = await api.getCars({ page: 1, pageSize: 10 });
-
-      console.log("cars", carResponse);
     } catch (error) {
       console.log("err", error);
     }
@@ -46,30 +43,35 @@ const CariMobil = () => {
     });
   };
 
-  // Tambahkan useEffect untuk memeriksa validitas form setiap kali formData berubah
   useEffect(() => {
-    if (formData.namaMobil !== "" && formData.kategori !== "" && formData.harga !== "" && formData.status !== "") {
+    if (
+      formData.namaMobil !== "" &&
+      formData.kategori !== "" &&
+      formData.harga !== "" &&
+      formData.status !== ""
+    ) {
       setFormValid(true);
     } else {
       setFormValid(false);
     }
   }, [formData]);
-  console.log(formData);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Validasi setiap field secara terpisah
-    if (formData.namaMobil || formData.kategori || formData.harga || formData.status) {
+    if (
+      formData.namaMobil ||
+      formData.kategori ||
+      formData.harga ||
+      formData.status
+    ) {
       const carResponse1 = await api.getCars({
         name: formData.namaMobil,
         category: formData.kategori,
         price: formData.harga,
         status: formData.status,
       });
-      console.log(carResponse1);
       const cars = carResponse1.data.cars;
-      console.log(cars);
       const path = `/hasil-cari?namaMobil=${formData.namaMobil}&kategori=${formData.kategori}&harga=${formData.harga}&status=${formData.status}`;
       navigate(path, { state: cars });
     } else {
@@ -84,16 +86,33 @@ const CariMobil = () => {
     <div>
       <HeroSection />
       <Container className="mb-5 custom-margin-cari-mobil">
-        <Row className="bg-white shadow border rounded-2 cari-mobil-container" style={rowStyle}>
+        <Row
+          className="bg-white shadow border rounded-2 cari-mobil-container"
+          style={rowStyle}
+        >
           <Col>
-            <Form className="d-lg-flex py-4 pt-3 align-items-center justify-content-evenly" onSubmit={handleSubmit}>
+            <Form
+              className="d-lg-flex py-4 pt-3 align-items-center justify-content-evenly"
+              onSubmit={handleSubmit}
+            >
               <Form.Group controlId="input1" className="rounded-5">
                 <Form.Label>Nama Mobil</Form.Label>
-                <Form.Control type="text" placeholder="Ketik Nama/Tipe Mobil" name="namaMobil" value={formData.namaMobil} onChange={handleInputChange} />
+                <Form.Control
+                  type="text"
+                  placeholder="Ketik Nama/Tipe Mobil"
+                  name="namaMobil"
+                  value={formData.namaMobil}
+                  onChange={handleInputChange}
+                />
               </Form.Group>
               <Form.Group controlId="input2">
                 <Form.Label>Kategori</Form.Label>
-                <Form.Select aria-label="Default select example" name="kategori" value={formData.kategori} onChange={handleInputChange}>
+                <Form.Select
+                  aria-label="Default select example"
+                  name="kategori"
+                  value={formData.kategori}
+                  onChange={handleInputChange}
+                >
                   <option value="">Masukkan Kapasitas Mobil</option>
                   {kategoriOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -104,7 +123,12 @@ const CariMobil = () => {
               </Form.Group>
               <Form.Group controlId="input3">
                 <Form.Label>Harga</Form.Label>
-                <Form.Select aria-label="Default select example" name="harga" value={formData.harga} onChange={handleInputChange}>
+                <Form.Select
+                  aria-label="Default select example"
+                  name="harga"
+                  value={formData.harga}
+                  onChange={handleInputChange}
+                >
                   <option value="">Masukan Harga Sewa Per Hari</option>
                   {hargaOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -115,12 +139,22 @@ const CariMobil = () => {
               </Form.Group>
               <Form.Group controlId="input4" className="">
                 <Form.Label>Status</Form.Label>
-                <Form.Select aria-label="Default select example" name="status" value={formData.status} onChange={handleInputChange}>
+                <Form.Select
+                  aria-label="Default select example"
+                  name="status"
+                  value={formData.status}
+                  onChange={handleInputChange}
+                >
                   <option value="disewa">Disewa</option>
                   <option value="avalible">Available</option>
                 </Form.Select>
               </Form.Group>
-              <button type="submit" className="btn text-white " style={{ marginTop: "30px", backgroundColor: "#5CB85F" }} onClick={login}>
+              <button
+                type="submit"
+                className="btn text-white "
+                style={{ marginTop: "30px", backgroundColor: "#5CB85F" }}
+                onClick={login}
+              >
                 Cari Mobil
               </button>
             </Form>
