@@ -59,11 +59,11 @@ const SignupPage = () => {
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-4">
                   <Form.Label htmlFor="fullName">Name*</Form.Label>
-                  <Form.Control type="text" placeholder="Nama Lengkap" name="fullName" value={form.fullName} onChange={handleChange} />
+                  <Form.Control type="text" placeholder="Full Name" name="fullName" value={form.fullName} onChange={handleChange} />
                 </Form.Group>
                 <Form.Group className="mb-4">
                   <Form.Label htmlFor="emailAddress">Email*</Form.Label>
-                  <Form.Control type="email" placeholder="Contoh: fandhy@gmail.com" name="emailAddress" value={form.emailAddress} onChange={handleChange} />
+                  <Form.Control type="email" placeholder="Example: fandhy@gmail.com" name="emailAddress" value={form.emailAddress} onChange={handleChange} />
                 </Form.Group>
                 <Form.Group className="mb-4">
                   <Form.Label htmlFor="password">Password*</Form.Label>
@@ -78,7 +78,7 @@ const SignupPage = () => {
               {error && <p className="text-danger mt-3">{error}</p>}
 
               <p className="text-center mt-4">
-                Already have an account? <Link to="/login">Login here</Link>
+                Already have an account? <Link to="/login">Login Here</Link>
               </p>
             </Col>
             <Col className="d-none d-md-block">
