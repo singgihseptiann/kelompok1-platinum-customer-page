@@ -5,7 +5,7 @@ import button_download from "../../assets/images/button_download.png";
 import icon_success from "../../assets/images/icon_success.png";
 import HeaderStepper from "./HeadStepper";
 import axios from "axios";
-import { Spinner } from "reactstrap"; // Perubahan pada impor
+import { Spinner } from "reactstrap"; 
 
 function Etiket() {
   const { id } = useParams();
@@ -28,25 +28,23 @@ function Etiket() {
           }
         );
 
-        // Simulasi penundaan selama 2 detik
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
         setOrder(response.data);
 
-        // Assuming the slip information is in a field called 'slip' in the response
+        
         const storedSlip = response.data.slip;
 
         if (storedSlip) {
           setUploadedSlip(storedSlip);
 
-          // Menghapus local storage
           localStorage.removeItem("countdown");
           localStorage.removeItem("countdownMinute");
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false); // Setelah selesai fetching data, loading diubah menjadi false
+        setLoading(false); 
       }
     };
     fetchData();
