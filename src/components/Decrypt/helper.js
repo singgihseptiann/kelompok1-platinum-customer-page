@@ -1,37 +1,31 @@
 import CryptoJS from "crypto-js";
 
-// const secretKey = "rahasia";
+// Ensure that encryptionKey is defined
 const encryptionKey = "your-secret-key";
-
-// localStorage.setItem("id_car", id);
-// const dataToEncrypt = {
-//   id_car: id,
-//   start_rent: startDate,
-//   end_rent: endDate,
-//   // tambahkan data lainnya yang perlu disimpan
-// };
-
-// export const encryptData = (data) => {
-//   const encryptedData = CryptoJS.AES.encrypt(
-//     JSON.stringify(data),
-//     encryptionKey
-//   ).toString();
-//   return encryptedData;
-// };
 
 export const encryptData = (token) => {
   const encryptedToken = CryptoJS.AES.encrypt(token, encryptionKey).toString();
   return encryptedToken;
 };
 
-// export const decryptData = (encryptedData) => {
-//   const bytes = CryptoJS.AES.decrypt(encryptedData, encryptionKey);
-//   const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-//   return decryptedData;
-// };
-
 export const decryptData = (encryptedToken) => {
-  const decryptedBytes = CryptoJS.AES.decrypt(encryptedToken, encryptionKey);
-  const decryptedToken = decryptedBytes.toString(CryptoJS.enc.Utf8);
-  return decryptedToken;
+  try {
+    // Check if encryptedToken is not empty
+    if (!encryptedToken) {
+      throw new Error("Encrypted token is empty");
+    }
+
+    const decryptedBytes = CryptoJS.AES.decrypt(encryptedToken, encryptionKey);
+    const decryptedToken = decryptedBytes.toString(CryptoJS.enc.Utf8);
+
+    // Check if decryptedToken is not empty
+    if (!decryptedToken) {
+      throw new Error("Decryption failed");
+    }
+
+    return decryptedToken;
+  } catch (error) {
+    // console.error("Error decrypting data:", error);
+    return null;
+  }
 };

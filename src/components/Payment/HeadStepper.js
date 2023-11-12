@@ -11,8 +11,8 @@ function HeaderStepper(props) {
   const navigate = useNavigate(); 
 
   const handleBack = () => {
-    navigate(-1); 
-  };
+    navigate('/second-payment'); 
+  }; 
 
   return (
     <div className="payment-header-container">
